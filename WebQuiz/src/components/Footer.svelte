@@ -14,9 +14,9 @@
 <style>
     
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');                    
 
-    h1, h2, h3 {
+    h1, h2, h3 {    
         font-family: 'Orbitron', sans-serif;
     }
 
@@ -28,7 +28,7 @@
     }
 
     #footer-cont >* {
-        margin: 5px;
+        margin: 0;
     }
 
     img {

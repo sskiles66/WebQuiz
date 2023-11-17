@@ -1,20 +1,88 @@
 <script>
 
+    let showDropdown = false;
+    let showLogin = false;
+    let showSignUp = false;
+    
+    function toggleDropdown(){
+        showDropdown = !showDropdown;
+    }
+
+    function toggleLogin(){
+        showLogin = !showLogin;
+    }
+
+    function toggleSignUp(){
+        showSignUp = !showSignUp;
+    }
+
+
+    
 </script>
 
 <nav>
 
     <div id="left">
         <img src="../images/logo.png" alt="logo">
-        <h2>WebQuiz</h2>
+        <h1>WebQuiz</h1>
     </div>
 
     <div id="right">
         <a href="#">Home</a>
         <a href="#">Quiz</a>
-        <a href="#">Stats</a>
         <a href="#">Summary</a>
+
     </div>
+
+    <div id="login-cont">
+        <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon" src="../images/black-login-icon--0.png" alt="logo icon"></button>
+        {#if showDropdown}
+            <div class="dropdown" style="position: absolute; top: 155%;">
+                <div class="dropdown-header">
+                    <button on:click={toggleLogin} id="loginDrop">Log In ></button> 
+                        {#if showLogin}
+                            <form action="#" method="post">
+
+                                <h2>Login In</h2>
+
+                                <label for="account_email">Email: </label><br>
+                                <input type="email" id="account_email" name="account_email" required><br>
+                                
+                                <label for="account_password">Password: </label><br>
+                                <input type="password" id="account_password" name="account_password" required><br>
+                                    
+                                <input id="loginButton" type="submit" value="Log In">
+
+                            </form>
+                        {/if}
+                    <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
+                        {#if showSignUp}
+                            <form action="#" method="post">
+
+                                <h2>Sign Up</h2>
+
+                                <label for="account_firstname">First name: </label><br>
+                                <input type="text" id="account_firstname" name="account_firstname" required><br>
+
+                                <label for="account_lastname">Last Name: </label><br>
+                                <input type="text" id="account_lastname" name="account_lastname" required><br>
+
+                                <label for="account_email">Email: </label><br>
+                                <input type="email" id="account_email" name="account_email" required><br>
+                                
+                                <label for="account_password">Password: </label><br>
+                                <input type="password" id="account_password" name="account_password" required><br>
+                                    
+                                <input id="signUpButton" type="submit" value="Sign Up">
+
+                            </form>
+                        {/if}
+                </div>
+            </div>
+        {/if}
+    </div>
+
+
     
 </nav>
 
@@ -33,35 +101,134 @@
     }
 
     nav {
-        display: flex;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         background-color: #9BF9FA;
         align-items: center;
-        justify-content: space-around;
+        
     }
 
     #left {
         display: flex;
         align-items: center;
+        justify-content: center;
     }
 
     #left >* {
-        margin: 5px;
+        margin: 0;
     }
 
     #right {
+        display: flex;
         background-color: #393D3F;
-        padding: 10px;
+        
         border-radius: 10px;
+        margin: 0 auto;
+        width: 300px;
+        justify-content: center;
     }
 
     #right >* {
-        margin: 10px;
         padding: 10px;
         text-decoration: none;
         color: #9BF9FA;
     }
 
+    #right >*:hover {
+        background-color: red;
+    }
+
+    #login-icon {
+        width: 20px; /* Adjust as needed */
+        height: 20px; /* Adjust as needed */
+        cursor: pointer;
+    }
+
+    #login-cont{
+        cursor: pointer;
+    }
+
+    #loginIconButton {
+        background-color: #9BF9FA;
+        border: none;
+        padding: 0;
+    }
+
+    #login-icon:hover {
+        cursor: pointer;
+    }
+
+    #login-cont{
+        text-align: center;
+        position:relative;
+    }
+
     img {
         width: 50px;
+    }
+
+    button {
+        border-radius: 10px;
+    }
+
+    .dropdown {
+        background-color: #393D3F;
+        width: 100%;
+        text-align: left;
+    }
+
+    .dropdown-header {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .dropdown-header >* {
+        padding: 10px;
+        margin: 10px;
+    }
+
+    #loginDrop, #signUpDrop{
+        display: block;
+        padding: 10px;
+        background-color: #9BF9FA;
+        
+    }
+
+    form {
+        background-color: #393D3F;
+        padding: 20px;
+        border-radius: 5px;
+        color: #9BF9FA;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form h2 {
+        color: #9BF9FA;
+    }
+
+    form input, form select, form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border: 1px solid #9BF9FA;
+        background-color: #393D3F;
+        color: #9BF9FA;
+    }
+
+    #signUpButton, #loginButton {
+        margin: 0 auto; 
+        background-color: #9BF9FA;
+        color: #393D3F;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    #signUpButton:hover, #loginButton:hover {
+        background-color: #7FA8A9;
     }
 </style>
