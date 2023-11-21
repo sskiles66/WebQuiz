@@ -1,11 +1,15 @@
 import express from "express"
 import dotenv from "dotenv"
+import cors from "cors"
 import userRoutes from "./routes/userRoutes.js"
 import connectDB from "./database/db.js";
 
 dotenv.config()
 
 const app = express()
+
+// Cors middleware
+app.use(cors());
 
 // Body parser middleware
 app.use(express.json());

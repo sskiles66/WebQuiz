@@ -1,234 +1,273 @@
 <script>
+  import {onMount} from 'svelte';
+  import {navigate} from 'svelte-routing';
 
-    let showDropdown = false;
-    let showLogin = false;
-    let showSignUp = false;
-    
-    function toggleDropdown(){
-        showDropdown = !showDropdown;
+  let showDropdown = false;
+  let showLogin = false;
+  let showSignUp = false;
+  let signUpError = '';
+
+  function toggleDropdown() {
+    showDropdown = !showDropdown;
+  }
+
+  function toggleLogin() {
+    showLogin = !showLogin;
+  }
+
+  async function toggleSignUp(event) {
+    event.preventDefault();
+    showSignUp = !showSignUp;
+
+    const form = event.target;
+    const formData = new FormData(form);
+
+    const name = formData.get('account_firstname');
+    const email = formData.get('account_email');
+    const password = formData.get('account_password');
+
+    console.log(name, email, password);
+
+    try {
+      await registerUser({name, email, password});
+      navigate('/');
+    } catch (err) {
+      signUpError = err.message;
+    }
+  }
+
+  async function registerUser(user) {
+    console.log("data sent:", user)
+
+    const response = await fetch('http://localhost:6969/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    });
+
+    if (!response.ok) {
+      throw new Error('Registration failed');
     }
 
-    function toggleLogin(){
-        showLogin = !showLogin;
-    }
-
-    function toggleSignUp(){
-        showSignUp = !showSignUp;
-    }
-
-
-    
+    return response.json();
+  }
 </script>
 
 <nav>
 
-    <div id="left">
-        <img src="../images/logo.png" alt="logo">
-        <h1>WebQuiz</h1>
-    </div>
+  <div id="left">
+    <img src="../images/logo.png" alt="logo">
+    <h1>WebQuiz</h1>
+  </div>
 
-    <div id="right">
-        <a href="#">Home</a>
-        <a href="#">Quiz</a>
-        <a href="#">Summary</a>
+  <div id="right">
+    <a href="#">Home</a>
+    <a href="#">Quiz</a>
+    <a href="#">Summary</a>
 
-    </div>
+  </div>
 
-    <div id="login-cont">
-        <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon" src="../images/black-login-icon--0.png" alt="logo icon"></button>
-        {#if showDropdown}
-            <div class="dropdown" style="position: absolute; top: 155%;">
-                <div class="dropdown-header">
-                    <button on:click={toggleLogin} id="loginDrop">Log In ></button> 
-                        {#if showLogin}
-                            <form action="#" method="post">
+  <div id="login-cont">
+    <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon" src="../images/black-login-icon--0.png"
+                                                                alt="logo icon"></button>
+    {#if showDropdown}
+      <div class="dropdown" style="position: absolute; top: 155%;">
+        <div class="dropdown-header">
+          <button on:click={toggleLogin} id="loginDrop">Log In ></button>
+          {#if showLogin}
+            <form action="#" method="post">
 
-                                <h2>Login In</h2>
+              <h2>Login In</h2>
 
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-                                
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-                                    
-                                <input id="loginButton" type="submit" value="Log In">
+              <label for="account_email">Email: </label><br>
+              <input type="email" id="account_email" name="account_email" required><br>
 
-                            </form>
-                        {/if}
-                    <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
-                        {#if showSignUp}
-                            <form action="#" method="post">
+              <label for="account_password">Password: </label><br>
+              <input type="password" id="account_password" name="account_password" required><br>
 
-                                <h2>Sign Up</h2>
+              <input id="loginButton" type="submit" value="Log In">
 
-                                <label for="account_firstname">First name: </label><br>
-                                <input type="text" id="account_firstname" name="account_firstname" required><br>
+            </form>
+          {/if}
+          <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
+          {#if showSignUp}
+            <form on:submit|preventDefault={toggleSignUp}>
 
-                                <label for="account_lastname">Last Name: </label><br>
-                                <input type="text" id="account_lastname" name="account_lastname" required><br>
+              <h2>Sign Up</h2>
 
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-                                
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-                                    
-                                <input id="signUpButton" type="submit" value="Sign Up">
+              <label for="account_firstname">First name: </label><br>
+              <input type="text" id="account_firstname" name="account_firstname" required><br>
 
-                            </form>
-                        {/if}
-                </div>
-            </div>
-        {/if}
-    </div>
+              <label for="account_lastname">Last Name: </label><br>
+              <input type="text" id="account_lastname" name="account_lastname" required><br>
+
+              <label for="account_email">Email: </label><br>
+              <input type="email" id="account_email" name="account_email" required><br>
+
+              <label for="account_password">Password: </label><br>
+              <input type="password" id="account_password" name="account_password" required><br>
+
+              <input id="signUpButton" type="submit" value="Sign Up">
+
+              {#if signUpError}
+                <p>{signUpError}</p>
+              {/if}
+
+            </form>
+          {/if}
+        </div>
+      </div>
+    {/if}
+  </div>
 
 
-    
 </nav>
 
 
 <style>
-    
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
-    h1, h2, h3 {
-        font-family: 'Orbitron', sans-serif;
-    }
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
-    p, a {
-        font-family: 'Roboto', sans-serif;
-    }
+  h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+  }
 
-    nav {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        background-color: #9BF9FA;
-        align-items: center;
-        
-    }
+  p, a {
+    font-family: 'Roboto', sans-serif;
+  }
 
-    #left {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #9BF9FA;
+    align-items: center;
 
-    #left >* {
-        margin: 0;
-    }
+  }
 
-    #right {
-        display: flex;
-        background-color: #393D3F;
-        
-        border-radius: 10px;
-        margin: 0 auto;
-        width: 300px;
-        justify-content: center;
-    }
+  #left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    #right >* {
-        padding: 10px;
-        text-decoration: none;
-        color: #9BF9FA;
-    }
+  #left > * {
+    margin: 0;
+  }
 
-    #right >*:hover {
-        background-color: red;
-    }
+  #right {
+    display: flex;
+    background-color: #393D3F;
 
-    #login-icon {
-        width: 20px; /* Adjust as needed */
-        height: 20px; /* Adjust as needed */
-        cursor: pointer;
-    }
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 300px;
+    justify-content: center;
+  }
 
-    #login-cont{
-        cursor: pointer;
-    }
+  #right > * {
+    padding: 10px;
+    text-decoration: none;
+    color: #9BF9FA;
+  }
 
-    #loginIconButton {
-        background-color: #9BF9FA;
-        border: none;
-        padding: 0;
-    }
+  #right > *:hover {
+    background-color: red;
+  }
 
-    #login-icon:hover {
-        cursor: pointer;
-    }
+  #login-icon {
+    width: 20px; /* Adjust as needed */
+    height: 20px; /* Adjust as needed */
+    cursor: pointer;
+  }
 
-    #login-cont{
-        text-align: center;
-        position:relative;
-    }
+  #login-cont {
+    cursor: pointer;
+  }
 
-    img {
-        width: 50px;
-    }
+  #loginIconButton {
+    background-color: #9BF9FA;
+    border: none;
+    padding: 0;
+  }
 
-    button {
-        border-radius: 10px;
-    }
+  #login-icon:hover {
+    cursor: pointer;
+  }
 
-    .dropdown {
-        background-color: #393D3F;
-        width: 100%;
-        text-align: left;
-    }
+  #login-cont {
+    text-align: center;
+    position: relative;
+  }
 
-    .dropdown-header {
-        padding: 10px;
-        margin: 10px;
-    }
+  img {
+    width: 50px;
+  }
 
-    .dropdown-header >* {
-        padding: 10px;
-        margin: 10px;
-    }
+  button {
+    border-radius: 10px;
+  }
 
-    #loginDrop, #signUpDrop{
-        display: block;
-        padding: 10px;
-        background-color: #9BF9FA;
-        
-    }
+  .dropdown {
+    background-color: #393D3F;
+    width: 100%;
+    text-align: left;
+  }
 
-    form {
-        background-color: #393D3F;
-        padding: 20px;
-        border-radius: 5px;
-        color: #9BF9FA;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+  .dropdown-header {
+    padding: 10px;
+    margin: 10px;
+  }
 
-    form h2 {
-        color: #9BF9FA;
-    }
+  .dropdown-header > * {
+    padding: 10px;
+    margin: 10px;
+  }
 
-    form input, form select, form textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        border: 1px solid #9BF9FA;
-        background-color: #393D3F;
-        color: #9BF9FA;
-    }
+  #loginDrop, #signUpDrop {
+    display: block;
+    padding: 10px;
+    background-color: #9BF9FA;
 
-    #signUpButton, #loginButton {
-        margin: 0 auto; 
-        background-color: #9BF9FA;
-        color: #393D3F;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  }
 
-    #signUpButton:hover, #loginButton:hover {
-        background-color: #7FA8A9;
-    }
+  form {
+    background-color: #393D3F;
+    padding: 20px;
+    border-radius: 5px;
+    color: #9BF9FA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form h2 {
+    color: #9BF9FA;
+  }
+
+  form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #9BF9FA;
+    background-color: #393D3F;
+    color: #9BF9FA;
+  }
+
+  #signUpButton, #loginButton {
+    margin: 0 auto;
+    background-color: #9BF9FA;
+    color: #393D3F;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  #signUpButton:hover, #loginButton:hover {
+    background-color: #7FA8A9;
+  }
 </style>
