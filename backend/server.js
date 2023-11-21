@@ -21,5 +21,5 @@ app.get("/", (req, res) => {
 app.use("/api/users", userRoutes);
 
 app.listen(process.env.PORT || 6969, () => {
-  console.log(`Serve at http://localhost:${process.env.PORT || 5000}`)
+  console.log(`Server at http://localhost:${process.env.PORT || 5000}`)
 });
