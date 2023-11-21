@@ -1,6 +1,6 @@
-// import asyncHandler from "../middleware/asyncHandler.js";
-// import User from "../models/userModel.js";
 // import generateToken from "../utils/generateToken.js";
+import User from "../models/userModel.js"
+import asyncHandler from "../middleware/asyncHandler.js";
 
 // @desc Auth user & get token
 // @route POST /api/users/login
@@ -30,10 +30,8 @@ const authUser = (async (req, res) => {
 // @desc Register user
 // @route POST /api/users
 // @access Public
-const registerUser = (async (req, res) => {
-  res.send("Register User");
-
-  /*const {name, email, password} = req.body;
+const registerUser = asyncHandler(async (req, res) => {
+  const {name, email, password} = req.body;
 
   const userExist = await User.findOne({email});
 
@@ -49,18 +47,15 @@ const registerUser = (async (req, res) => {
   });
 
   if (user) {
-    generateToken(res, user._id);
-
     res.status(201).json({
       _id: user._id,
       name: user.name,
       email: user.email,
-      isAdmin: user.isAdmin
     });
   } else {
     res.status(400);
     throw new Error("Invalid user data");
-  }*/
+  }
 });
 
 // @desc Logout user / clear cookie
