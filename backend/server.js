@@ -6,7 +6,7 @@ dotenv.config()
 
 const app = express()
 
-// Body parser middlewre
+// Body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
