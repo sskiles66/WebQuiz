@@ -6,6 +6,10 @@ const userSchema = new mongoose.Schema({
   password: {type: String, required: true},
 })
 
+userSchema.methods.matchPassword = async function (enteredPassword) {
+  return await this.password === enteredPassword;
+}
+
 const User = mongoose.model("User", userSchema);
 
 export default User;
