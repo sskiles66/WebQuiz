@@ -1,4 +1,6 @@
+
 <script>
+    import { slide } from 'svelte/transition';
 
     let showDropdown = false;
     let showLogin = false;
@@ -37,11 +39,11 @@
     <div id="login-cont">
         <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon" src="../images/black-login-icon--0.png" alt="logo icon"></button>
         {#if showDropdown}
-            <div class="dropdown" style="position: absolute; top: 155%;">
+            <div transition:slide class="dropdown" style="position: absolute; top: 155%;">
                 <div class="dropdown-header">
                     <button on:click={toggleLogin} id="loginDrop">Log In ></button> 
                         {#if showLogin}
-                            <form action="#" method="post">
+                            <form transition:slide action="#" method="post">
 
                                 <h2>Login In</h2>
 
@@ -57,7 +59,7 @@
                         {/if}
                     <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
                         {#if showSignUp}
-                            <form action="#" method="post">
+                            <form transition:slide action="#" method="post">
 
                                 <h2>Sign Up</h2>
 
@@ -135,7 +137,7 @@
     }
 
     #right >*:hover {
-        background-color: red;
+        background-color: #535758;
     }
 
     #login-icon {
@@ -175,6 +177,11 @@
         background-color: #393D3F;
         width: 100%;
         text-align: left;
+        transition: max-height .3s ease;
+    }
+
+    .open{
+        max-height: 200px;
     }
 
     .dropdown-header {
@@ -198,7 +205,7 @@
         background-color: #393D3F;
         padding: 20px;
         border-radius: 5px;
-        color: #9BF9FA;
+        color: #535758;
         display: flex;
         flex-direction: column;
         align-items: center;
