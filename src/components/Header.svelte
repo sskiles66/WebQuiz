@@ -235,6 +235,11 @@
 
     }
 
+    #loginDrop:hover, #signUpDrop:hover{
+        background-color: #bafeff;
+        cursor: pointer;
+    }
+
     form {
         background-color: #393D3F;
         padding: 20px;
@@ -270,6 +275,6 @@
     }
 
     #signUpButton:hover, #loginButton:hover {
-        background-color: #7FA8A9;
+        background-color: #bafeff;
     }
 </style>
