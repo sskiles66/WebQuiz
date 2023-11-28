@@ -1,23 +1,58 @@
 <script>
+    import {onMount} from "svelte";
+    import {navigate} from "svelte-routing";
 
     let showDropdown = false;
     let showLogin = false;
     let showSignUp = false;
-    
-    function toggleDropdown(){
+    let signUpError = "";
+
+    function toggleDropdown() {
         showDropdown = !showDropdown;
     }
 
-    function toggleLogin(){
+    function toggleLogin() {
         showLogin = !showLogin;
     }
 
-    function toggleSignUp(){
+    async function toggleSignUp(event) {
+        event.preventDefault();
         showSignUp = !showSignUp;
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        const name = formData.get("account_firstname");
+        const email = formData.get("account_email");
+        const password = formData.get("account_password");
+
+        console.log(name, email, password);
+
+        try {
+            await registerUser({name, email, password});
+            navigate("/");
+        } catch (err) {
+            signUpError = err.message;
+        }
     }
 
+    async function registerUser(user) {
+        console.log("data sent:", user);
 
-    
+        const response = await fetch("http://localhost:6969/api/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+        });
+
+        if (!response.ok) {
+            throw new Error("Registration failed");
+        }
+
+        return response.json();
+    }
 </script>
 
 <nav>
@@ -35,60 +70,65 @@
     </div>
 
     <div id="login-cont">
-        <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon" src="../images/black-login-icon--0.png" alt="logo icon"></button>
+        <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon"
+                                                                    src="../images/black-login-icon--0.png"
+                                                                    alt="logo icon"></button>
         {#if showDropdown}
             <div class="dropdown" style="position: absolute; top: 155%;">
                 <div class="dropdown-header">
-                    <button on:click={toggleLogin} id="loginDrop">Log In ></button> 
-                        {#if showLogin}
-                            <form action="#" method="post">
+                    <button on:click={toggleLogin} id="loginDrop">Log In ></button>
+                    {#if showLogin}
+                        <form action="#" method="post">
 
-                                <h2>Login In</h2>
+                            <h2>Login In</h2>
 
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-                                
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-                                    
-                                <input id="loginButton" type="submit" value="Log In">
+                            <label for="account_email">Email: </label><br>
+                            <input type="email" id="account_email" name="account_email" required><br>
 
-                            </form>
-                        {/if}
+                            <label for="account_password">Password: </label><br>
+                            <input type="password" id="account_password" name="account_password" required><br>
+
+                            <input id="loginButton" type="submit" value="Log In">
+
+                        </form>
+                    {/if}
                     <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
-                        {#if showSignUp}
-                            <form action="#" method="post">
+                    {#if showSignUp}
+                        <form on:submit|preventDefault={toggleSignUp}>
 
-                                <h2>Sign Up</h2>
+                            <h2>Sign Up</h2>
 
-                                <label for="account_firstname">First name: </label><br>
-                                <input type="text" id="account_firstname" name="account_firstname" required><br>
+                            <label for="account_firstname">First name: </label><br>
+                            <input type="text" id="account_firstname" name="account_firstname" required><br>
 
-                                <label for="account_lastname">Last Name: </label><br>
-                                <input type="text" id="account_lastname" name="account_lastname" required><br>
+                            <label for="account_lastname">Last Name: </label><br>
+                            <input type="text" id="account_lastname" name="account_lastname" required><br>
 
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-                                
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-                                    
-                                <input id="signUpButton" type="submit" value="Sign Up">
+                            <label for="account_email">Email: </label><br>
+                            <input type="email" id="account_email" name="account_email" required><br>
 
-                            </form>
-                        {/if}
+                            <label for="account_password">Password: </label><br>
+                            <input type="password" id="account_password" name="account_password" required><br>
+
+                            <input id="signUpButton" type="submit" value="Sign Up">
+
+                            {#if signUpError}
+                                <p>{signUpError}</p>
+                            {/if}
+
+                        </form>
+                    {/if}
                 </div>
             </div>
         {/if}
     </div>
 
 
-    
 </nav>
 
 
 <style>
-    
+
 
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
@@ -105,7 +145,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         background-color: #9BF9FA;
         align-items: center;
-        
+
     }
 
     #left {
@@ -114,27 +154,27 @@
         justify-content: center;
     }
 
-    #left >* {
+    #left > * {
         margin: 0;
     }
 
     #right {
         display: flex;
         background-color: #393D3F;
-        
+
         border-radius: 10px;
         margin: 0 auto;
         width: 300px;
         justify-content: center;
     }
 
-    #right >* {
+    #right > * {
         padding: 10px;
         text-decoration: none;
         color: #9BF9FA;
     }
 
-    #right >*:hover {
+    #right > *:hover {
         background-color: red;
     }
 
@@ -144,7 +184,7 @@
         cursor: pointer;
     }
 
-    #login-cont{
+    #login-cont {
         cursor: pointer;
     }
 
@@ -158,9 +198,9 @@
         cursor: pointer;
     }
 
-    #login-cont{
+    #login-cont {
         text-align: center;
-        position:relative;
+        position: relative;
     }
 
     img {
@@ -182,16 +222,16 @@
         margin: 10px;
     }
 
-    .dropdown-header >* {
+    .dropdown-header > * {
         padding: 10px;
         margin: 10px;
     }
 
-    #loginDrop, #signUpDrop{
+    #loginDrop, #signUpDrop {
         display: block;
         padding: 10px;
         background-color: #9BF9FA;
-        
+
     }
 
     form {
@@ -219,7 +259,7 @@
     }
 
     #signUpButton, #loginButton {
-        margin: 0 auto; 
+        margin: 0 auto;
         background-color: #9BF9FA;
         color: #393D3F;
         border: none;
