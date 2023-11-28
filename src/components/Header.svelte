@@ -1,4 +1,5 @@
 <script>
+    import { slide } from 'svelte/transition';
     import {onMount} from "svelte";
     import {navigate} from "svelte-routing";
 
@@ -74,11 +75,11 @@
                                                                     src="../images/black-login-icon--0.png"
                                                                     alt="logo icon"></button>
         {#if showDropdown}
-            <div class="dropdown" style="position: absolute; top: 155%;">
+            <div transition:slide class="dropdown" style="position: absolute; top: 155%;">
                 <div class="dropdown-header">
                     <button on:click={toggleLogin} id="loginDrop">Log In ></button>
                     {#if showLogin}
-                        <form action="#" method="post">
+                        <form transition:slide action="#" method="post">
 
                             <h2>Login In</h2>
 
@@ -94,7 +95,7 @@
                     {/if}
                     <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
                     {#if showSignUp}
-                        <form on:submit|preventDefault={toggleSignUp}>
+                        <form transition:slide on:submit|preventDefault={toggleSignUp}>
 
                             <h2>Sign Up</h2>
 
@@ -175,7 +176,7 @@
     }
 
     #right > *:hover {
-        background-color: red;
+        background-color: #535758;
     }
 
     #login-icon {
