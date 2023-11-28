@@ -11,7 +11,8 @@
         [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
     }
     
-    let answer;
+    let answer ;
+
     console.log(answer);
 </script>
 
@@ -22,6 +23,7 @@
             <label
                 ><input type="radio" name={question.id} value={allQuestions[0]} bind:group={answer} /><span
                     >{allQuestions[0]}</span
+                    
                 ></label
             >
         </li>
