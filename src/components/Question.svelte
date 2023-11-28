@@ -1,44 +1,47 @@
 <script>
-    
+    import {getRandomQuestion} from "../utils.mjs";
+    const question = getRandomQuestion();
+    const wrong = question.wrongAnswers;
+    console.log(wrong);
+
+
 </script>
 
 
 
-
-<!-- Have a loop through question objects and generate this format-->
 <h2>Question </h2>
 <div>
-    <p>Which of these is the correct answer?</p>
-    <ul class="choices">
+    <p>{question.questionTitle}</p>
+    <!-- <ul class="choices">
         <li class = "choice">
             <label
                 ><input type="radio" name="question0" value="A" /><span
-                    >This is a wrong answer</span
+                    >{wrong[1]}</span
                 ></label
             >
         </li>
         <li class = "choice">
             <label
                 ><input type="radio" name="question0" value="A" /><span
-                    >This is a correct answer</span
+                    >{question.correctAnswer}</span
                 ></label
             >
         </li>
         <li class = "choice">
             <label
                 ><input type="radio" name="question0" value="A" /><span
-                    >This is a wrong answer</span
+                    >{wrong[2]}</span
                 ></label
             >
         </li>
         <li class = "choice">
             <label
                 ><input type="radio" name="question0" value="A" /><span
-                    >This is a wrong answer</span
+                    >{wrong[0]}</span
                 ></label
             >
         </li>
-    </ul>
+    </ul> -->
 </div>
 
 <style>

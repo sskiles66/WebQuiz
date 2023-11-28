@@ -1,5 +1,5 @@
 import {renderHeaderFooter} from "../utils.mjs";
-import { renderQuestion } from "../utils.mjs";
+import { renderQuestions } from "../utils.mjs";
 
 renderHeaderFooter();
-renderQuestion();
+renderQuestions();

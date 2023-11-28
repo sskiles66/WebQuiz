@@ -1,6 +1,6 @@
 import Header from "./components/Header.svelte";
 import Footer from "./components/Footer.svelte";
-import Test from "./components/Test.svelte";
+import Question from "./components/Question.svelte";
 
 
 
@@ -60,7 +60,7 @@ export function getRandomQuestion() {
 
 export function renderQuestions(){
     for (let i = 0; i < 10; i++){
-        new Test({
+        new Question({
             target: document.querySelector("#questions"),
         });
     }
