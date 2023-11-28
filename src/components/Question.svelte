@@ -1,47 +1,52 @@
 <script>
     import {getRandomQuestion} from "../utils.mjs";
     const question = getRandomQuestion();
+
     const wrong = question.wrongAnswers;
-    console.log(wrong);
-
-
+    let allQuestions = wrong;
+    allQuestions.push(question.correctAnswer);
+    // Fisher-Yates (Knuth) Shuffle algorithm
+    for (let i = allQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [allQuestions[i], allQuestions[j]] = [allQuestions[j], allQuestions[i]];
+    }
+    
+    let answer;
+    console.log(answer);
 </script>
 
-
-
-<h2>Question </h2>
 <div>
     <p>{question.questionTitle}</p>
-    <!-- <ul class="choices">
+     <ul class="choices">
         <li class = "choice">
             <label
-                ><input type="radio" name="question0" value="A" /><span
-                    >{wrong[1]}</span
+                ><input type="radio" name={question.id} value={allQuestions[0]} bind:group={answer} /><span
+                    >{allQuestions[0]}</span
                 ></label
             >
         </li>
         <li class = "choice">
             <label
-                ><input type="radio" name="question0" value="A" /><span
-                    >{question.correctAnswer}</span
+                ><input type="radio" name={question.id} value={allQuestions[1]} bind:group={answer} /><span
+                    >{allQuestions[1]}</span
                 ></label
             >
         </li>
         <li class = "choice">
             <label
-                ><input type="radio" name="question0" value="A" /><span
-                    >{wrong[2]}</span
+                ><input type="radio" name={question.id} value={allQuestions[2]} bind:group={answer} /><span
+                    >{allQuestions[2]}</span
                 ></label
             >
         </li>
         <li class = "choice">
             <label
-                ><input type="radio" name="question0" value="A" /><span
-                    >{wrong[0]}</span
+                ><input type="radio" name={question.id} value={allQuestions[3]} bind:group={answer} /><span
+                    >{allQuestions[3]}</span
                 ></label
             >
         </li>
-    </ul> -->
+    </ul> 
 </div>
 
 <style>
@@ -72,7 +77,5 @@
         margin-left:2vw;
 
     }
-    h2{
-        text-align: center;
-    }
+
 </style>
