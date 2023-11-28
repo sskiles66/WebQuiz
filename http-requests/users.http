@@ -2,7 +2,7 @@
 GET localhost:6969/api/users
 Accept: application/json
 
-### Create a user
+### Register a user
 POST localhost:6969/api/users
 Content-Type: application/json
 
