@@ -6,15 +6,21 @@
   "scripts": {
     "start": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "nodemon backend/server.js",
+    "concurrently": "concurrently \"npm run server\" \"npm run start\""
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.5.2",
+    "concurrently": "^8.2.2",
     "vite": "^4.5.0"
   },
   "main": "main.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "svelte-routing": "^2.7.0"
+  }
 }
