@@ -3,7 +3,11 @@ import { renderQuestions } from "../utils.mjs";
 import { questionPool } from "../utils.mjs";
 
 renderHeaderFooter();
+
+// if (false){
 renderQuestions();
+// }
+
 
 // submit handler on form (use the formData like in sleepoutside)
 
@@ -41,7 +45,8 @@ function checkQuestions(formData){
         }
         t+=1;
     }
-    console.log(correct)
+    alert(`Congrats you got ${correct} / 10!`);
+    // window.location.href = '/'; // Redirect to homepage
 }
   
 // prevent default

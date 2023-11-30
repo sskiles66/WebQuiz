@@ -17,7 +17,7 @@
 </script>
 
 <div>
-    <p>{question.questionTitle}</p>
+    <h3>{question.questionTitle}</h3>
      <ul class="choices">
         <li class = "choice">
             <label
@@ -52,10 +52,16 @@
 </div>
 
 <style>
+
+    h3 {
+        margin-left:2vw;
+        font-family: 'Orbitron';;
+    }
+    
     .choices{
         border-top: 2px solid gainsboro;
         list-style: none;
-        background-color: aliceblue;
+        background-color: #393D3F;
         margin: 0;
         padding-bottom: 10px;
         border-bottom-left-radius: 18px;
@@ -64,6 +70,7 @@
     .choice{
         font-family: 'Roboto';
         margin: .9vw;
+        color: #9BF9FA;
     }
 
     div{

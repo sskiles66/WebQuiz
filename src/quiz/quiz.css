@@ -2,3 +2,30 @@
     display: grid;
     justify-content: center;
 }
+
+body {
+    margin: 0;
+    background-color: #F7FFF7;
+}
+
+#button-cont {
+    display: flex;
+    justify-content: center;
+}
+
+#quizSubmit {
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background-color: #393D3F; 
+    color: #9BF9FA; 
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#quizSubmit:hover {
+    background-color: #2B2E30; /* Darker shade of the original color */
+}
