@@ -12,7 +12,6 @@ document.forms["quiz"].addEventListener("submit", (e) => {
     e.preventDefault();
     // e.target would contain our form in this case
     var formStuff = formDataToJSON(e.target)
-    console.log(formStuff)
    checkQuestions(formStuff);
 
 });
@@ -30,21 +29,19 @@ document.forms["quiz"].addEventListener("submit", (e) => {
 }
 
 function checkQuestions(formData){
-    var i = 1;
+    var correct = 0;
     var t = 0;
     for(let answer in formData){
 
-        console.log(answer);
-        console.log(questionPool[t].correctAnswer);
-        if (questionPool[t].correctAnswer == answer) {
-            console.log("correct");
+        if (questionPool[t].correctAnswer == formData[answer]) {
+            correct +=1;
         }
         else{
             console.log("wrong");
         }
-        i+=1;
         t+=1;
     }
+    console.log(correct)
 }
   
 // prevent default
