@@ -13,7 +13,7 @@ export function renderHeaderFooter(){
     });
 }
 
-const questionPool = [
+export const questionPool = [
     { questionTitle: "What is the difference between `==` and `===` in JavaScript?", 
         wrongAnswers: ["i dont know", "idk", "i really dont know"], 
         id: 1,
