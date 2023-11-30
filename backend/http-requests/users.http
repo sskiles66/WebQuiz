@@ -1,0 +1,25 @@
+### GET users
+GET localhost:6969/api/users
+Accept: application/json
+
+### Register a user
+POST localhost:6969/api/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john2@email.com",
+  "password": "123456"
+}
+
+### Login/Auth a user & give cookie
+POST localhost:6969/api/users/auth
+Content-Type: application/json
+
+{
+  "email": "abraham@email.com",
+  "password": "123456"
+}
+
+### Logout user & remove cookie
+POST localhost:6969/api/users/logout
