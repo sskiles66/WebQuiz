@@ -1,5 +1,4 @@
 <script>
-    import {onMount} from "svelte";
     import {navigate} from "svelte-routing";
 
     let showDropdown = false;
@@ -11,13 +10,16 @@
         showDropdown = !showDropdown;
     }
 
-    function toggleLogin() {
+    function showLoginForm() {
         showLogin = !showLogin;
+    }
+
+    function showSignUpForm() {
+        showSignUp = !showSignUp;
     }
 
     async function toggleSignUp(event) {
         event.preventDefault();
-        showSignUp = !showSignUp;
 
         const form = event.target;
         const formData = new FormData(form);
@@ -25,8 +27,6 @@
         const name = formData.get("account_firstname");
         const email = formData.get("account_email");
         const password = formData.get("account_password");
-
-        console.log(name, email, password);
 
         try {
             await registerUser({name, email, password});
@@ -37,8 +37,6 @@
     }
 
     async function registerUser(user) {
-        console.log("data sent:", user);
-
         const response = await fetch("http://localhost:6969/api/users", {
             method: "POST",
             headers: {
@@ -66,7 +64,6 @@
         <a href="#">Home</a>
         <a href="#">Quiz</a>
         <a href="#">Summary</a>
-
     </div>
 
     <div id="login-cont">
@@ -76,9 +73,9 @@
         {#if showDropdown}
             <div class="dropdown" style="position: absolute; top: 155%;">
                 <div class="dropdown-header">
-                    <button on:click={toggleLogin} id="loginDrop">Log In ></button>
+                    <button on:click={showLoginForm} id="loginDrop">Log In ></button>
                     {#if showLogin}
-                        <form action="#" method="post">
+                        <form on:submit|preventDefault={registerUser} action="#" method="post">
 
                             <h2>Login In</h2>
 
@@ -92,7 +89,7 @@
 
                         </form>
                     {/if}
-                    <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
+                    <button on:click={showSignUpForm} id="signUpDrop">Sign Up ></button>
                     {#if showSignUp}
                         <form on:submit|preventDefault={toggleSignUp}>
 
@@ -115,21 +112,16 @@
                             {#if signUpError}
                                 <p>{signUpError}</p>
                             {/if}
-
                         </form>
                     {/if}
                 </div>
             </div>
         {/if}
     </div>
-
-
 </nav>
 
 
 <style>
-
-
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
     h1, h2, h3 {
