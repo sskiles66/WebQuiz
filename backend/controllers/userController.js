@@ -1,4 +1,3 @@
-// import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
 import asyncHandler from "../middleware/asyncHandler.js";
 import generateToken from "../utils/generateToken.js";
@@ -28,7 +27,7 @@ const authUser = (async (req, res) => {
     }
 });
 
-// @desc Register user
+// @desc Register user & give token
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
@@ -48,6 +47,9 @@ const registerUser = asyncHandler(async (req, res) => {
         });
 
         if (user) {
+            console.log(user)
+            generateToken(res, user._id)
+
             res.status(201).json({
                 _id: user._id,
                 name: user.name,
