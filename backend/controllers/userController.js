@@ -10,9 +10,10 @@ const authUser = (async (req, res) => {
         const {email, password} = req.body;
 
         const user = await User.findOne({email});
+        console.log(user);
 
         if (user && (await user.matchPassword(password))) {
-            generateToken(res, user._id);
+            generateToken(res, user._id, user.name, user.email);
 
             res.status(200).json({
                 _id: user._id,
@@ -47,8 +48,8 @@ const registerUser = asyncHandler(async (req, res) => {
         });
 
         if (user) {
-            console.log(user)
-            generateToken(res, user._id, user.email, user.name)
+            console.log(user);
+            generateToken(res, user._id, user.email, user.name);
 
             res.status(201).json({
                 _id: user._id,

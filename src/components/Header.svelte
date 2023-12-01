@@ -1,5 +1,7 @@
 <script>
+    import {onMount} from "svelte";
     import {navigate} from "svelte-routing";
+    import {user} from "../store.js";
 
     let showDropdown = false;
     let showLogin = false;
@@ -52,9 +54,50 @@
 
         return response.json();
     }
+
+    async function loginUser(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        const email = formData.get("account_email");
+        const password = formData.get("account_password");
+
+        const response = await fetch("http://localhost:6969/api/users/auth", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({email, password}),
+            credentials: "include",
+        });
+
+        if (!response.ok) {
+            throw new Error("Login failed");
+        }
+
+        const userData = await response.json();
+        localStorage.setItem("userData", JSON.stringify(userData));
+        user.set(userData);
+    }
+
+    // Check if user is logged in
+    let userData = null;
+
+    onMount(() => {
+        const storedUserData = localStorage.getItem("userData");
+
+        if (storedUserData) {
+            userData = JSON.parse(storedUserData);
+        }
+    });
 </script>
 
 <nav>
+    {#if userData}
+        <h1>Welcome {userData.name}</h1>
+    {/if}
 
     <div id="left">
         <img src="../images/logo.png" alt="logo">
@@ -76,7 +119,7 @@
                 <div class="dropdown-header">
                     <button on:click={showLoginForm} id="loginDrop">Log In ></button>
                     {#if showLogin}
-                        <form on:submit|preventDefault={registerUser} action="#" method="post">
+                        <form on:submit|preventDefault={loginUser} method="post">
 
                             <h2>Login In</h2>
 

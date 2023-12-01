@@ -1,3 +1,37 @@
+POST http://localhost:6969/api/users/auth
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY4Y2M2Y2I1M2UyNmRjZjFhNmNiY2UiLCJpYXQiOjE3MDE0MDk0ODMsImV4cCI6MTcwNDAwMTQ4M30.mpp0IOW5R2UvGeKRXOQskjv20_-e3armGqtiWrvnoEs
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "abraham@email.com",
+  "password": "123456"
+}
+
+<> 2023-11-30T231351.200.json
+
+###
+
+POST http://localhost:6969/api/users/auth
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY4YzlkNWY2ZDU1ZGExYWUzYTA5MjMiLCJpYXQiOjE3MDEzNjYyMjksImV4cCI6MTcwMzk1ODIyOX0.pCPRBs6Fwcd8zjOJjaqPa5Xny9AnH06_Y571G0efpd4
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "abraham@email.com",
+  "password": "123456"
+}
+
+<> 2023-11-30T224443.200.json
+
+###
+
 POST http://localhost:6969/api/users
 Content-Type: application/json
 Content-Length: 78
