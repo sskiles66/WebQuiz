@@ -1,6 +1,5 @@
 import User from "../models/userModel.js";
 import asyncHandler from "../middleware/asyncHandler.js";
-import generateToken from "../utils/generateToken.js";
 
 // @desc Auth user & get token
 // @route POST /api/users/auth
@@ -13,7 +12,6 @@ const authUser = (async (req, res) => {
         console.log(user);
 
         if (user && (await user.matchPassword(password))) {
-            generateToken(res, user._id, user.name, user.email);
 
             res.status(200).json({
                 _id: user._id,
@@ -49,7 +47,6 @@ const registerUser = asyncHandler(async (req, res) => {
 
         if (user) {
             console.log(user);
-            generateToken(res, user._id, user.email, user.name);
 
             res.status(201).json({
                 _id: user._id,
@@ -68,10 +65,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/logout
 // @access Public
 const logoutUser = (async (req, res) => {
-    res.cookie("jwt", "", {
-        httpOnly: true,
-        expires: new Date(0),
-    });
+    res.clearCookie("jwt")
 
     res.status(200).json({message: "Logged out successfully"});
 });

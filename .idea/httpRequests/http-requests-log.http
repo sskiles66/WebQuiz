@@ -1,3 +1,14 @@
+POST http://localhost:6969/api/users/logout
+Content-Length: 0
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Cookie: jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NTY4Y2M2Y2I1M2UyNmRjZjFhNmNiY2UiLCJpYXQiOjE3MDE0MTEyMzEsImV4cCI6MTcwNDAwMzIzMX0.mSL6haP2Be3ZgUSF_11IYuKSHIUDl5D3cfM5MXpw6V0
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-11-30T234124.200.json
+
+###
+
 POST http://localhost:6969/api/users/auth
 Content-Type: application/json
 Content-Length: 58

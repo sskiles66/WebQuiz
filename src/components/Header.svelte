@@ -92,6 +92,17 @@
             userData = JSON.parse(storedUserData);
         }
     });
+
+    async function logoutUser() {
+        const response = await fetch("http://localhost:6969/api/users/logout", {
+            method: "POST",
+            credentials: "include",
+        });
+
+        if (!response.ok) {
+            throw new Error("Logout failed");
+        }
+    }
 </script>
 
 <nav>
@@ -158,6 +169,7 @@
                             {/if}
                         </form>
                     {/if}
+                    <button on:click={logoutUser}>Logout</button>
                 </div>
             </div>
         {/if}
