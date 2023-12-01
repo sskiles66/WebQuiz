@@ -1,6 +1,4 @@
-import {renderHeaderFooter} from "../utils.mjs";
-import {renderQuestions} from "../utils.mjs";
-import {questionPool} from "../utils.mjs";
+import {questionPool, renderHeaderFooter, renderQuestions} from "../utils.mjs";
 
 renderHeaderFooter();
 
