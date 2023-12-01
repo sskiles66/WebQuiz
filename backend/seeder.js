@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import colors from "colors";
 import users from "./data/users.js";
 import User from "./models/userModel.js";
 import connectDB from "./database/db.js";
@@ -11,12 +12,12 @@ const importData = async () => {
     try {
         await User.deleteMany();
 
-        const createdUsers = await User.insertMany(users);
+        await User.insertMany(users);
 
-        console.log("Data Imported!".green.inverse);
+        console.log(colors.green.inverse("Data Imported!"));
         process.exit();
     } catch (err) {
-        console.error(`${err}`.red.inverse);
+        console.error(colors.red.inverse(`${err}`));
     }
 };
 

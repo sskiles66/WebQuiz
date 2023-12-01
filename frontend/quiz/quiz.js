@@ -31,11 +31,11 @@ function formDataToJSON(formElement) {
 }
 
 function checkQuestions(formData) {
-    var correct = 0;
-    var t = 0;
+    let correct = 0;
+    let t = 0;
     for (let answer in formData) {
 
-        if (questionPool[t].correctAnswer == formData[answer]) {
+        if (questionPool[t].correctAnswer === formData[answer]) {
             correct += 1;
         } else {
             console.log("wrong");

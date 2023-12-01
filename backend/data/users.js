@@ -1,16 +1,16 @@
 const users = [
     {
-        name: "Admin User",
+        name: "Admin",
         email: "admin@email.com",
         password: "123456",
     },
     {
-        name: "John Doe",
+        name: "John",
         email: "john@email.com",
         password: "123456",
     },
     {
-        name: "Jane User",
+        name: "Jane",
         email: "jane@email.com",
         password: "123456",
     },

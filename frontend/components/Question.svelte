@@ -56,7 +56,7 @@
 
     h3 {
         margin-left: 2vw;
-        font-family: 'Orbitron';;
+        font-family: Orbitron, sans-serif;
     }
 
     .choices {
@@ -70,7 +70,7 @@
     }
 
     .choice {
-        font-family: 'Roboto';
+        font-family: Roboto, sans-serif;
         margin: .9vw;
         color: #9BF9FA;
     }

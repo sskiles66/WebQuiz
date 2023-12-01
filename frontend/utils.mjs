@@ -83,8 +83,7 @@ export function getRandomQuestion() {
         randomIndex = Math.floor(Math.random() * questionPool.length);
     }
     usedQuestionIndex.push(randomIndex);
-    const question = questionPool[randomIndex];
-    return question;
+    return questionPool[randomIndex];
 }
 
 export function renderQuestions() {
