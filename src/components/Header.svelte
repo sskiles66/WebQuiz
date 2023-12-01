@@ -1,4 +1,5 @@
 <script>
+    import { slide } from 'svelte/transition';
     import {onMount} from "svelte";
     import {navigate} from "svelte-routing";
     import {user} from "../store.js";
@@ -128,11 +129,11 @@
                                                                     src="../images/black-login-icon--0.png"
                                                                     alt="logo icon"></button>
         {#if showDropdown}
-            <div class="dropdown" style="position: absolute; top: 155%;">
+            <div transition:slide class="dropdown" style="position: absolute; top: 155%;">
                 <div class="dropdown-header">
                     <button on:click={showLoginForm} id="loginDrop">Log In ></button>
                     {#if showLogin}
-                        <form on:submit|preventDefault={loginUser} method="post">
+                        <form transition:slide on:submit|preventDefault={loginUser} method="post">
 
                             <h2>Login In</h2>
 
@@ -148,7 +149,7 @@
                     {/if}
                     <button on:click={showSignUpForm} id="signUpDrop">Sign Up ></button>
                     {#if showSignUp}
-                        <form on:submit|preventDefault={toggleSignUp}>
+                        <form transition:slide on:submit|preventDefault={toggleSignUp}>
 
                             <h2>Sign Up</h2>
 
@@ -225,7 +226,7 @@
     }
 
     #right > *:hover {
-        background-color: red;
+        background-color: #535758;
     }
 
     #login-icon {
@@ -284,6 +285,11 @@
 
     }
 
+    #loginDrop:hover, #signUpDrop:hover{
+        background-color: #bafeff;
+        cursor: pointer;
+    }
+
     form {
         background-color: #393D3F;
         padding: 20px;
@@ -319,6 +325,6 @@
     }
 
     #signUpButton:hover, #loginButton:hover {
-        background-color: #7FA8A9;
+        background-color: #bafeff;
     }
 </style>
