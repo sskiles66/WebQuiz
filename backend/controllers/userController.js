@@ -1,7 +1,5 @@
-// import generateToken from "../utils/generateToken.js";
 import User from "../models/userModel.js";
 import asyncHandler from "../middleware/asyncHandler.js";
-import generateToken from "../utils/generateToken.js";
 
 // @desc Auth user & get token
 // @route POST /api/users/auth
@@ -11,9 +9,9 @@ const authUser = (async (req, res) => {
         const {email, password} = req.body;
 
         const user = await User.findOne({email});
+        console.log(user);
 
         if (user && (await user.matchPassword(password))) {
-            generateToken(res, user._id);
 
             res.status(200).json({
                 _id: user._id,
@@ -28,7 +26,7 @@ const authUser = (async (req, res) => {
     }
 });
 
-// @desc Register user
+// @desc Register user & give token
 // @route POST /api/users
 // @access Public
 const registerUser = asyncHandler(async (req, res) => {
@@ -48,6 +46,8 @@ const registerUser = asyncHandler(async (req, res) => {
         });
 
         if (user) {
+            console.log(user);
+
             res.status(201).json({
                 _id: user._id,
                 name: user.name,
@@ -65,10 +65,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route POST /api/users/logout
 // @access Public
 const logoutUser = (async (req, res) => {
-    res.cookie("jwt", "", {
-        httpOnly: true,
-        expires: new Date(0),
-    });
+    res.clearCookie("jwt")
 
     res.status(200).json({message: "Logged out successfully"});
 });

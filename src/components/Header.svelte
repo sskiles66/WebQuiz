@@ -2,6 +2,7 @@
     import { slide } from 'svelte/transition';
     import {onMount} from "svelte";
     import {navigate} from "svelte-routing";
+    import {user} from "../store.js";
 
     let showDropdown = false;
     let showLogin = false;
@@ -12,13 +13,16 @@
         showDropdown = !showDropdown;
     }
 
-    function toggleLogin() {
+    function showLoginForm() {
         showLogin = !showLogin;
+    }
+
+    function showSignUpForm() {
+        showSignUp = !showSignUp;
     }
 
     async function toggleSignUp(event) {
         event.preventDefault();
-        showSignUp = !showSignUp;
 
         const form = event.target;
         const formData = new FormData(form);
@@ -26,8 +30,6 @@
         const name = formData.get("account_firstname");
         const email = formData.get("account_email");
         const password = formData.get("account_password");
-
-        console.log(name, email, password);
 
         try {
             await registerUser({name, email, password});
@@ -38,14 +40,13 @@
     }
 
     async function registerUser(user) {
-        console.log("data sent:", user);
-
         const response = await fetch("http://localhost:6969/api/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(user),
+            credentials: "include",
         });
 
         if (!response.ok) {
@@ -54,10 +55,60 @@
 
         return response.json();
     }
+
+    async function loginUser(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+
+        const email = formData.get("account_email");
+        const password = formData.get("account_password");
+
+        const response = await fetch("http://localhost:6969/api/users/auth", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({email, password}),
+            credentials: "include",
+        });
+
+        if (!response.ok) {
+            throw new Error("Login failed");
+        }
+
+        const userData = await response.json();
+        localStorage.setItem("userData", JSON.stringify(userData));
+        user.set(userData);
+    }
+
+    // Check if user is logged in
+    let userData = null;
+
+    onMount(() => {
+        const storedUserData = localStorage.getItem("userData");
+
+        if (storedUserData) {
+            userData = JSON.parse(storedUserData);
+        }
+    });
+
+    async function logoutUser() {
+        localStorage.removeItem("userData");
+
+        const response = await fetch("http://localhost:6969/api/users/logout", {
+            method: "POST",
+            credentials: "include",
+        });
+
+        if (!response.ok) {
+            throw new Error("Logout failed");
+        }
+    }
 </script>
 
 <nav>
-
     <div id="left">
         <img src="../images/logo.png" alt="logo">
         <h1>WebQuiz</h1>
@@ -67,7 +118,6 @@
         <a href="#">Home</a>
         <a href="#">Quiz</a>
         <a href="#">Summary</a>
-
     </div>
 
     <div id="login-cont">
@@ -77,9 +127,9 @@
         {#if showDropdown}
             <div transition:slide class="dropdown" style="position: absolute; top: 155%;">
                 <div class="dropdown-header">
-                    <button on:click={toggleLogin} id="loginDrop">Log In ></button>
+                    <button on:click={showLoginForm} id="loginDrop">Log In ></button>
                     {#if showLogin}
-                        <form transition:slide action="#" method="post">
+                        <form transition:slide on:submit|preventDefault={loginUser} method="post">
 
                             <h2>Login In</h2>
 
@@ -93,7 +143,7 @@
 
                         </form>
                     {/if}
-                    <button on:click={toggleSignUp} id="signUpDrop">Sign Up ></button>
+                    <button on:click={showSignUpForm} id="signUpDrop">Sign Up ></button>
                     {#if showSignUp}
                         <form transition:slide on:submit|preventDefault={toggleSignUp}>
 
@@ -116,21 +166,17 @@
                             {#if signUpError}
                                 <p>{signUpError}</p>
                             {/if}
-
                         </form>
                     {/if}
+                    <button on:click={logoutUser}>Logout</button>
                 </div>
             </div>
         {/if}
     </div>
-
-
 </nav>
 
 
 <style>
-
-
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
     h1, h2, h3 {
