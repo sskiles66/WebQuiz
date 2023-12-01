@@ -94,6 +94,8 @@
     });
 
     async function logoutUser() {
+        localStorage.removeItem("userData");
+
         const response = await fetch("http://localhost:6969/api/users/logout", {
             method: "POST",
             credentials: "include",
