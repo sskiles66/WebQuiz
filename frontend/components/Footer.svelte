@@ -3,20 +3,18 @@
 </script>
 
 
+<div id="footer-cont">
+    <img src="../images/logo.png" alt="logo">
+    <h2>WebQuiz</h2>
+</div>
 
-    <div id="footer-cont">
-        <img src="../images/logo.png" alt="logo">
-        <h2>WebQuiz</h2>
-    </div>
-    
-    
 
 <style>
-    
 
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');                    
 
-    h1, h2, h3 {    
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
+
+    h1, h2, h3 {
         font-family: 'Orbitron', sans-serif;
     }
 
@@ -27,7 +25,7 @@
         align-items: center;
     }
 
-    #footer-cont >* {
+    #footer-cont > * {
         margin: 0;
     }
 
@@ -35,5 +33,5 @@
         width: 50px;
     }
 
-    
+
 </style>

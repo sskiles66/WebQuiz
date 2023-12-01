@@ -1,5 +1,5 @@
 <script>
-    import { slide } from 'svelte/transition';
+    import {slide} from "svelte/transition";
     import {onMount} from "svelte";
     import {navigate} from "svelte-routing";
     import {user} from "../store.js";
@@ -281,7 +281,7 @@
 
     }
 
-    #loginDrop:hover, #signUpDrop:hover{
+    #loginDrop:hover, #signUpDrop:hover {
         background-color: #bafeff;
         cursor: pointer;
     }
