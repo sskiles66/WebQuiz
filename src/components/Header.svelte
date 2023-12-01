@@ -109,10 +109,6 @@
 </script>
 
 <nav>
-    {#if userData}
-        <h1>Welcome {userData.name}</h1>
-    {/if}
-
     <div id="left">
         <img src="../images/logo.png" alt="logo">
         <h1>WebQuiz</h1>
