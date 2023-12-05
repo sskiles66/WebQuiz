@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
+import quizRoutes from "./routes/quizRoutes.js";
 import connectDB from "./database/db.js";
 
 dotenv.config();
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+app.use("/api/quiz", quizRoutes);
 
 app.listen(process.env.PORT || 6969, () => {
     console.log(`Server at http://localhost:${process.env.PORT || 5000}`);

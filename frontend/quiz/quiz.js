@@ -30,9 +30,8 @@ function formDataToJSON(formElement) {
     return convertedJSON;
 }
 
+let correct = 0;
 function checkQuestions(formData) {
-    let correct = 0;
-    console.log(formData)
     for (let answer in formData) {
         console.log(answer)
         if (questionPool[answer-1].correctAnswer === formData[answer]) {
@@ -69,4 +68,33 @@ function checkQuestions(formData) {
 
 // prevent default
 // look into for of or for in loops (for objects)
-// review checkout stuff for the sleep outside 
+// review checkout stuff for the sleep outside
+
+
+// Send quiz scores on submit
+
+async function sendQuizScores(quizScore) {
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    let userId = userData._id
+
+    const response = await fetch("http://localhost:6969/api/quiz", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({currentScore: quizScore, userId: userId}),
+        credentials: "include",
+    });
+
+    if (!response.ok) {
+        throw new Error("Could not send quiz scores");
+    }
+
+    console.log(response);
+    const userQuizScores = await response.json();
+    console.log(userQuizScores);
+}
+
+document.querySelector("#quizSubmit").addEventListener("click", () => {
+    sendQuizScores(correct)
+})

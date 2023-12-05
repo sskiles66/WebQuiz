@@ -58,9 +58,9 @@
             throw new Error("Registration failed");
         }
 
-        console.log(response)
+        console.log(response);
         const userData = await response.json();
-        console.log(userData)
+        console.log(userData);
     }
 
     async function loginUser(e) {
@@ -116,6 +116,8 @@
 </script>
 
 <nav>
+
+
     <div id="left">
         <img src="../images/logo.png" alt="logo">
         <h1>WebQuiz</h1>
@@ -175,7 +177,9 @@
                             {/if}
                         </form>
                     {/if}
-                    <button on:click={logoutUser}>Logout</button>
+                    {#if userData}
+                        <button on:click={logoutUser}>Logout</button>
+                    {/if}
                 </div>
             </div>
         {/if}
