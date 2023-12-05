@@ -7,5 +7,6 @@ POST localhost:6969/api/quiz
 Content-Type: application/json
 
 {
-  "currentScore": 78
+  "currentScore": 69,
+  "userId": "656a4d7a48b8f541822c0f37"
 }

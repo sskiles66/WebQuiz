@@ -54,12 +54,15 @@ function checkQuestions(formData) {
 // Send quiz scores on submit
 
 async function sendQuizScores(quizScore) {
+    let userData = JSON.parse(localStorage.getItem('userData'));
+    let userId = userData._id
+
     const response = await fetch("http://localhost:6969/api/quiz", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({currentScore: quizScore}),
+        body: JSON.stringify({currentScore: quizScore, userId: userId}),
         credentials: "include",
     });
 

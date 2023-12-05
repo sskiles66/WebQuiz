@@ -16,11 +16,15 @@ const getScores = (async (req, res) => {
 
 const postScores = (async (req, res) => {
     try {
-        const {currentScore} = req.body;
+        const {currentScore, userId} = req.body;
         console.log(currentScore, "1")
+        console.log(userId, "userID")
+
+        // console.log(currentScore, "1")
 
         const quiz = await Quiz.create({
-            currentScore
+            currentScore,
+            userId
         })
 
         console.log(quiz, "quiz")
