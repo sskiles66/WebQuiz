@@ -8,5 +8,6 @@ Content-Type: application/json
 
 {
   "currentScore": 69,
-  "userId": "656a4d7a48b8f541822c0f37"
+  "userId": "656a4d7a48b8f541822c0f37",
+  "date": "2023-10-10"
 }
