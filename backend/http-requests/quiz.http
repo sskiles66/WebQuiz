@@ -1,0 +1,11 @@
+### GET quiz scores
+GET localhost:6969/api/quiz
+Accept: application/json
+
+### Send quiz scores
+POST localhost:6969/api/quiz
+Content-Type: application/json
+
+{
+  "currentScore": 78
+}

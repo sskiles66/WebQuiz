@@ -1,3 +1,69 @@
+GET http://localhost:6969/api/quiz
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-12-05T104004.200.json
+
+###
+
+POST http://localhost:6969/api/users/auth
+Content-Type: application/json
+Content-Length: 58
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "email": "abraham@email.com",
+  "password": "123456"
+}
+
+<> 2023-12-05T103924.200.json
+
+###
+
+POST http://localhost:6969/api/quiz
+Content-Type: application/json
+Content-Length: 24
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "currentScore": 78
+}
+
+<> 2023-12-05T103803.201.json
+
+###
+
+POST http://localhost:6969/api/quiz
+Content-Type: application/json
+Content-Length: 23
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "currentScore": 5
+}
+
+<> 2023-12-05T103748.201.json
+
+###
+
+GET http://localhost:6969/api/quiz
+Accept: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-12-05T101951.200.json
+
+###
+
 POST http://localhost:6969/api/users/logout
 Content-Length: 0
 Connection: Keep-Alive
