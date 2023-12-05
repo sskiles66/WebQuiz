@@ -21,6 +21,11 @@
         showSignUp = !showSignUp;
     }
 
+    // Reloads page when this function is executed
+    function reloadPage() {
+        location.reload();
+    }
+
     async function toggleSignUp(event) {
         event.preventDefault();
 
@@ -53,12 +58,12 @@
             throw new Error("Registration failed");
         }
 
-        return response.json();
+        console.log(response)
+        const userData = await response.json();
+        console.log(userData)
     }
 
     async function loginUser(e) {
-        e.preventDefault();
-
         const form = e.target;
         const formData = new FormData(form);
 
@@ -81,6 +86,7 @@
         const userData = await response.json();
         localStorage.setItem("userData", JSON.stringify(userData));
         user.set(userData);
+        reloadPage();
     }
 
     // Check if user is logged in
@@ -96,6 +102,7 @@
 
     async function logoutUser() {
         localStorage.removeItem("userData");
+        reloadPage();
 
         const response = await fetch("http://localhost:6969/api/users/logout", {
             method: "POST",
