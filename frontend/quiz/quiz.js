@@ -42,7 +42,27 @@ function checkQuestions(formData) {
         }
         t += 1;
     }
-    alert(`Congrats you got ${correct} / 10!`);
+    // alert(`Congrats you got ${correct} / 10!`);
+    let button1 = document.querySelector("#home-button");
+    let button2 = document.querySelector("#again-button");
+    let results = document.querySelector("#results");
+    let score = document.querySelector("#score");
+    
+    if (correct == 10){
+        results.classList.add("good")
+    }
+    else if(correct <= 2){
+        results.classList.add("bad");
+    }
+    score.classList.remove("hidden");
+    results.classList.remove("shrunk");
+    button1.classList.remove("hidden");
+    button2.classList.remove("hidden");
+    button1.classList.add("appear");
+    button2.classList.add("appear");
+    score.classList.add("appear");
+    results.classList.add("show");
+    score.textContent = `Your score is ${correct} / 10`
     // window.location.href = '/'; // Redirect to homepage
 }
 
