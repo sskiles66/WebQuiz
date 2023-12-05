@@ -32,15 +32,16 @@ function formDataToJSON(formElement) {
 
 function checkQuestions(formData) {
     let correct = 0;
-    let t = 0;
+    console.log(formData)
     for (let answer in formData) {
-
-        if (questionPool[t].correctAnswer === formData[answer]) {
+        console.log(answer)
+        if (questionPool[answer-1].correctAnswer === formData[answer]) {
+            console.log(questionPool[answer-1].correctAnswer);
+            console.log(formData[answer]);
             correct += 1;
         } else {
             console.log("wrong");
         }
-        t += 1;
     }
     alert(`Congrats you got ${correct} / 10!`);
     // window.location.href = '/'; // Redirect to homepage
