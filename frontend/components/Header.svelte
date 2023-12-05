@@ -119,20 +119,16 @@
 
 
     <div id="left">
-        <img src="../images/logo.png" alt="logo">
-        <h1>WebQuiz</h1>
+        <img src="../images/logo.svg" alt="logo">
+        <h1>WEB QUIZ</h1>
     </div>
 
     <div id="right">
-        <a href="#">Home</a>
-        <a href="#">Quiz</a>
-        <a href="#">Summary</a>
-    </div>
-
-    <div id="login-cont">
-        <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon"
-                                                                    src="../images/black-login-icon--0.png"
-                                                                    alt="logo icon"></button>
+        <a href="./index.html">Home</a>
+        <a href="./summary/index.html">Summary</a>
+        <a href="./quiz/index.html">Quiz</a>
+        <div id="login-cont">
+        <button id="loginIconButton" on:click={toggleDropdown}>Login</button>
         {#if showDropdown}
             <div transition:slide class="dropdown" style="position: absolute; top: 155%;">
                 <div class="dropdown-header">
@@ -184,6 +180,8 @@
             </div>
         {/if}
     </div>
+    </div>
+
 </nav>
 
 
@@ -200,8 +198,7 @@
 
     nav {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        background-color: #9BF9FA;
+        grid-template-columns: 1fr 2fr;
         align-items: center;
 
     }
@@ -218,7 +215,6 @@
 
     #right {
         display: flex;
-        background-color: #393D3F;
 
         border-radius: 10px;
         margin: 0 auto;
@@ -262,7 +258,7 @@
     }
 
     img {
-        width: 50px;
+        width: 30px;
     }
 
     button {

@@ -1,12 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300&display=swap');
 
 body {
-    background-color: #F7FFF7;
+    background: rgb(106,230,255);
+    background: linear-gradient(99deg, rgba(106,230,255,1) 0%, rgba(57,114,171,1) 100%);
     display: block;
     margin: 0;
 }
 
 main {
+    color:white;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
@@ -23,9 +26,28 @@ footer {
 h1 {
     font-family: Orbitron, sans-serif;
 }
+#fancy-smancy{
+    margin: 0 auto;
+    height:25vw;
+}
 
+#fancy-smancy button{
+    padding:14px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 1vw;
+}
 p {
-    font-family: Roboto, sans-serif;
+    color: white;
+    border-top: 1px solid white;
+    font-family: Assistant, sans-serif;
+    width: 25ch;
+    font-size: 3vw;
+}
+svg{
+    fill:white;
 }
 
 ul {
@@ -98,3 +120,4 @@ li {
 .take-quiz:hover {
     background-color: #535758;
 }
+
