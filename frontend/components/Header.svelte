@@ -58,9 +58,7 @@
             throw new Error("Registration failed");
         }
 
-        console.log(response);
-        const userData = await response.json();
-        console.log(userData);
+        await response.json();
     }
 
     async function loginUser(e) {
@@ -116,8 +114,6 @@
 </script>
 
 <nav>
-
-
     <div id="left">
         <img src="../images/logo.svg" alt="logo">
         <h1>WEB QUIZ</h1>
@@ -127,48 +123,47 @@
         <div id="login-cont">
             <button id="loginIconButton" on:click={toggleDropdown}>Login</button>
             {#if showDropdown}
-                <div transition:slide class="dropdown" style="position: absolute; top: 100%; width:400px; border-radius:20px;">
+                <div transition:slide class="dropdown"
+                     style="position: absolute; top: 100%; width:400px; border-radius:20px;">
                     <div class="dropdown-header">
-                        <button on:click={showLoginForm} id="loginDrop">Log In</button>
-                        {#if showLogin}
-                            <form transition:slide on:submit|preventDefault={loginUser} method="post">
-    
-                                <h2>Login</h2>
-    
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-    
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-    
-                                <input id="loginButton" type="submit" value="Log In">
-    
-                            </form>
-                        {/if}
-                        <button on:click={showSignUpForm} id="signUpDrop">Sign Up </button>
-                        {#if showSignUp}
-                            <form transition:slide on:submit|preventDefault={toggleSignUp}>
-    
-                                <h2>Sign Up</h2>
-    
-                                <label for="account_firstname">First name: </label><br>
-                                <input type="text" id="account_firstname" name="account_firstname" required><br>
-    
-                                <label for="account_lastname">Last Name: </label><br>
-                                <input type="text" id="account_lastname" name="account_lastname" required><br>
-    
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-    
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-    
-                                <input id="signUpButton" type="submit" value="Sign Up">
-    
-                                {#if signUpError}
-                                    <p>{signUpError}</p>
-                                {/if}
-                            </form>
+                        {#if !userData}
+                            <button on:click={showLoginForm} id="loginDrop">Log In</button>
+                            {#if showLogin}
+                                <form transition:slide on:submit|preventDefault={loginUser} method="post">
+                                    <h2>Login</h2>
+
+                                    <label for="account_email">Email: </label><br>
+                                    <input type="email" id="account_email" name="account_email" required><br>
+
+                                    <label for="account_password">Password: </label><br>
+                                    <input type="password" id="account_password" name="account_password" required><br>
+
+                                    <input id="loginButton" type="submit" value="Log In">
+                                </form>
+                            {/if}
+                            <button on:click={showSignUpForm} id="signUpDrop">Sign Up</button>
+                            {#if showSignUp}
+                                <form transition:slide on:submit|preventDefault={toggleSignUp}>
+                                    <h2>Sign Up</h2>
+
+                                    <label for="account_firstname">First name: </label><br>
+                                    <input type="text" id="account_firstname" name="account_firstname" required><br>
+
+                                    <label for="account_lastname">Last Name: </label><br>
+                                    <input type="text" id="account_lastname" name="account_lastname" required><br>
+
+                                    <label for="account_email">Email: </label><br>
+                                    <input type="email" id="account_email" name="account_email" required><br>
+
+                                    <label for="account_password">Password: </label><br>
+                                    <input type="password" id="account_password" name="account_password" required><br>
+
+                                    <input id="signUpButton" type="submit" value="Sign Up">
+                                    {#if signUpError}
+                                        <p>{signUpError}</p>
+                                    {/if}
+                                </form>
+                            {/if}
                         {/if}
                         {#if userData}
                             <button on:click={logoutUser}>Logout</button>
@@ -181,16 +176,15 @@
         <a href="../summary/index.html">Summary</a>
         <a href="../quiz/index.html">Quiz</a>
     </div>
-
 </nav>
 
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
-    h1, h2, h3 {
+    h1, h2 {
         font-family: 'Orbitron', sans-serif;
-        color:white;
+        color: white;
     }
 
     p, a {
@@ -223,8 +217,8 @@
         justify-content: center;
     }
 
-    #right a{
-        margin-top:10px;
+    #right a {
+        margin-top: 10px;
     }
 
     #right > * {
@@ -237,12 +231,6 @@
         text-decoration: underline;
     }
 
-    #login-icon {
-        width: 20px; /* Adjust as needed */
-        height: 20px; /* Adjust as needed */
-        cursor: pointer;
-    }
-
     #login-cont {
         cursor: pointer;
     }
@@ -253,10 +241,6 @@
         background-color: transparent;
         color: white;
         font-size: 90%;
-    }
-
-    #login-icon:hover {
-        cursor: pointer;
     }
 
     #login-cont {
@@ -290,11 +274,11 @@
     #loginDrop, #signUpDrop {
         display: block;
         padding: 10px;
-        background-color:rgba(255, 255, 255, 0);
+        background-color: rgba(255, 255, 255, 0);
         border: 1px solid white;
         color: white;
         margin: 10px auto;
-        width:100px;
+        width: 100px;
 
     }
 
@@ -318,7 +302,7 @@
         color: #9BF9FA;
     }
 
-    form input, form select, form textarea {
+    form input {
         width: 100%;
         padding: 10px;
         margin-bottom: 10px;
