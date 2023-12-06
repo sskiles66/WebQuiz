@@ -177,9 +177,9 @@
                 </div>
             {/if}
         </div>
-        <a href="./index.html">Home</a>
-        <a href="./summary/index.html">Summary</a>
-        <a href="./quiz/index.html">Quiz</a>
+        <a href="../index.html">Home</a>
+        <a href="../summary/index.html">Summary</a>
+        <a href="../quiz/index.html">Quiz</a>
     </div>
 
 </nav>
@@ -190,6 +190,7 @@
 
     h1, h2, h3 {
         font-family: 'Orbitron', sans-serif;
+        color:white;
     }
 
     p, a {

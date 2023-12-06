@@ -72,7 +72,7 @@
     .choice {
         font-family: Roboto, sans-serif;
         margin: .9vw;
-        color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
         
     }
 
@@ -81,7 +81,7 @@
         padding: 5px;
         border-radius: 20px;
         margin: 30px auto;
-        background-color: rgba(254, 254, 254, 0.149);
+        background-color: rgba(63, 63, 63, 0.149);
         box-shadow: 2px 3px 10px rgba(255, 255, 255, 0.61);
     }
 

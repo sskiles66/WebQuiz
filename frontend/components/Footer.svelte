@@ -4,7 +4,7 @@
 
 
 <footer id="footer-cont">
-    <img src="../images/logo.png" alt="logo">
+    <img src="../images/logo.svg" alt="logo">
     <h2>WebQuiz</h2>
 </footer>
 
@@ -16,12 +16,12 @@
 
     h1, h2, h3 {
         font-family: 'Orbitron', sans-serif;
+        color: white;
     }
 
     #footer-cont {
         display: flex;
         justify-content: center;
-        background-color: #9BF9FA;
         align-items: center;
     }
 
