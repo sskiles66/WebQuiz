@@ -12,19 +12,31 @@
     <header id="header"></header> 
     <main>
     <h1>Summary</h1>
-    <p>Here is a summary of your quiz scores and attempts. Pat yourself on the back, its not an easy quiz.</p>
+    <p>Here is a summary of your quiz scores and attempts. Pat yourself on the back, it's not an easy quiz.</p>
     <div id="stats" class="dash-card">
-        <h2 class="card-title">Stats</h2>
-        <ul class="stat-list">
-            <li>High Score:</li>
-            <li>Last Attempt:</li>
-            <li>Total Attempts:</li>
-            <li>Number of visits:</li>
-        </ul>
+        <div class="stat-list">
+            <div>
+                <p>High Score</p>
+                <h2 id="highScore">0</h2>
+            </div>
+            <div>
+                <p>Average Score</p>
+                <h2 id="averageScore">0</h2>
+            </div>
+            <div>
+                <p>Last Attempt</p>
+                <h2 id="lastAttempt">0</h2>
+            </div>
+            <div>
+                <p># of Attempts</p>
+                <h2 id="numberOfAttempts">0</h2>
+            </div>
+           
+        </div>
     </div>
     <div class="tryAgain">
         <h2>Ready to Try Again?</h2>
-        <p>Don't worry if you aren't pleased with the result. Try again! You can take it as much as you want. </p>
+        <p>Don't worry if you aren't pleased with the result. Try again! You can take it as often as you want. </p>
         <button>Take the Quiz</button>
     </div>
 </main>
