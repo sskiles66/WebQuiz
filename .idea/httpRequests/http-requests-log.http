@@ -1,3 +1,73 @@
+POST http://localhost:6969/api/quiz/summary
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "656f503351bc9201a7fa2c6f"
+}
+
+<> 2023-12-06T132224.200.json
+
+###
+
+POST http://localhost:6969/api/quiz/summary
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "656a4d7a48b8f541822c0f37"
+}
+
+<> 2023-12-06T132211.200.json
+
+###
+
+GET http://localhost:6969/api/quiz/summary
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "656a4d7a48b8f541822c0f37"
+}
+
+<> 2023-12-06T132155.200.json
+
+###
+
+GET http://localhost:6969/api/quiz/summary
+Content-Type: application/json
+Content-Length: 42
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "userId": "656a4d7a48b8f541822c0f37"
+}
+
+<> 2023-12-06T130605.200.json
+
+###
+
+GET http://localhost:6969/api/quiz/summary
+Content-Type: application/json
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+<> 2023-12-06T130601.200.json
+
+###
+
 GET http://localhost:6969/api/quiz/summary
 Content-Type: application/json
 Content-Length: 42
@@ -637,82 +707,6 @@ Accept-Encoding: br,deflate,gzip,x-gzip
 }
 
 <> 2023-11-28T101244.404.html
-
-###
-
-POST http://localhost:6969/api/auth/login
-Content-Type: application/json
-Content-Length: 35
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "",
-  "password": ""
-}
-
-<> 2023-11-28T101202.404.html
-
-###
-
-POST http://localhost:6969/api/users/login
-Content-Type: application/json
-Content-Length: 35
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "email": "",
-  "password": ""
-}
-
-<> 2023-11-28T101129.404.html
-
-###
-
-POST http://localhost:6969/api/users
-Content-Type: application/json
-Content-Length: 78
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "name": "John Doe",
-  "email": "john2@email.com",
-  "password": "123456"
-}
-
-<> 2023-11-28T100831.201.json
-
-###
-
-POST http://localhost:6969/api/users
-Content-Type: application/json
-Content-Length: 77
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-{
-  "name": "John Doe",
-  "email": "john@email.com",
-  "password": "123456"
-}
-
-<> 2023-11-28T100822.400.html
-
-###
-
-GET http://localhost:6969/api/users
-Accept: application/json
-Connection: Keep-Alive
-User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
-Accept-Encoding: br,deflate,gzip,x-gzip
-
-<> 2023-11-28T100738.200.json
 
 ###
 
