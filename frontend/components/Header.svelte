@@ -125,48 +125,51 @@
         <div id="login-cont">
             <button id="loginIconButton" on:click={toggleDropdown}>Login</button>
             {#if showDropdown}
-                <div transition:slide class="dropdown" style="position: absolute; top: 100%; width:400px; border-radius:20px;">
+                <div transition:slide class="dropdown"
+                     style="position: absolute; top: 100%; width:400px; border-radius:20px;">
                     <div class="dropdown-header">
-                        <button on:click={showLoginForm} id="loginDrop">Log In</button>
-                        {#if showLogin}
-                            <form transition:slide on:submit|preventDefault={loginUser} method="post">
+                        {#if !userData}
+                            <button on:click={showLoginForm} id="loginDrop">Log In</button>
+                            {#if showLogin}
+                                <form transition:slide on:submit|preventDefault={loginUser} method="post">
 
-                                <h2>Login</h2>
+                                    <h2>Login</h2>
 
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
+                                    <label for="account_email">Email: </label><br>
+                                    <input type="email" id="account_email" name="account_email" required><br>
 
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
+                                    <label for="account_password">Password: </label><br>
+                                    <input type="password" id="account_password" name="account_password" required><br>
 
-                                <input id="loginButton" type="submit" value="Log In">
+                                    <input id="loginButton" type="submit" value="Log In">
 
-                            </form>
-                        {/if}
-                        <button on:click={showSignUpForm} id="signUpDrop">Sign Up </button>
-                        {#if showSignUp}
-                            <form transition:slide on:submit|preventDefault={toggleSignUp}>
+                                </form>
+                            {/if}
+                            <button on:click={showSignUpForm} id="signUpDrop">Sign Up</button>
+                            {#if showSignUp}
+                                <form transition:slide on:submit|preventDefault={toggleSignUp}>
 
-                                <h2>Sign Up</h2>
+                                    <h2>Sign Up</h2>
 
-                                <label for="account_firstname">First name: </label><br>
-                                <input type="text" id="account_firstname" name="account_firstname" required><br>
+                                    <label for="account_firstname">First name: </label><br>
+                                    <input type="text" id="account_firstname" name="account_firstname" required><br>
 
-                                <label for="account_lastname">Last Name: </label><br>
-                                <input type="text" id="account_lastname" name="account_lastname" required><br>
+                                    <label for="account_lastname">Last Name: </label><br>
+                                    <input type="text" id="account_lastname" name="account_lastname" required><br>
 
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
+                                    <label for="account_email">Email: </label><br>
+                                    <input type="email" id="account_email" name="account_email" required><br>
 
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
+                                    <label for="account_password">Password: </label><br>
+                                    <input type="password" id="account_password" name="account_password" required><br>
 
-                                <input id="signUpButton" type="submit" value="Sign Up">
+                                    <input id="signUpButton" type="submit" value="Sign Up">
 
-                                {#if signUpError}
-                                    <p>{signUpError}</p>
-                                {/if}
-                            </form>
+                                    {#if signUpError}
+                                        <p>{signUpError}</p>
+                                    {/if}
+                                </form>
+                            {/if}
                         {/if}
                         {#if userData}
                             <button on:click={logoutUser}>Logout</button>
@@ -188,7 +191,7 @@
 
     h1, h2, h3 {
         font-family: 'Orbitron', sans-serif;
-        color:white;
+        color: white;
     }
 
     p, a {
@@ -221,8 +224,8 @@
         justify-content: center;
     }
 
-    #right a{
-        margin-top:10px;
+    #right a {
+        margin-top: 10px;
     }
 
     #right > * {
@@ -288,11 +291,11 @@
     #loginDrop, #signUpDrop {
         display: block;
         padding: 10px;
-        background-color:rgba(255, 255, 255, 0);
+        background-color: rgba(255, 255, 255, 0);
         border: 1px solid white;
         color: white;
         margin: 10px auto;
-        width:100px;
+        width: 100px;
 
     }
 
