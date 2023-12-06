@@ -7,6 +7,6 @@ router.route("/")
     .post(postScores)
     .get(getScores);
 router.route("/summary")
-    .get(userSummary)
+    .post(userSummary)
 
 export default router;

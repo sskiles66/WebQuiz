@@ -1,7 +1,7 @@
 ### Get summary based on userId
-GET localhost:6969/api/quiz/summary
+POST localhost:6969/api/quiz/summary
 Content-Type: application/json
 
 {
-  "userId": "656a4d7a48b8f541822c0f37"
+  "userId": "656f503351bc9201a7fa2c6f"
 }
