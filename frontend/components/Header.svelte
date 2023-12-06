@@ -58,9 +58,7 @@
             throw new Error("Registration failed");
         }
 
-        console.log(response);
         const userData = await response.json();
-        console.log(userData);
     }
 
     async function loginUser(e) {

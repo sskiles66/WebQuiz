@@ -38,6 +38,7 @@
 </script>
 
 <table>
+    {#if userData}
     <thead>
     <tr>
         <td>date</td>
@@ -64,4 +65,7 @@
         </tr>
     {/await}
     </tbody>
+        {:else}
+        <h1>Please <a href="/">log in</a></h1>
+    {/if}
 </table>
