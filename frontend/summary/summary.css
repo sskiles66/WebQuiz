@@ -9,22 +9,30 @@ body {
 .stat-list{
     display:grid;
     grid-template-columns: 1fr 1fr;
-    background-color: rgba(54, 93, 103, 0.266) ;
+    background-color: rgba(138, 171, 203, 0.406);
     width:50%;
     height:200px;
     padding:20px;
     margin: 0 auto;
     border-radius: 15px;
     list-style-type: none;
+    color: white;
+    
 }
+
 
 li{
     margin-bottom:9px;
 }
 
 #stats{
-    margin-top: 50px;
-    margin-bottom: 250px;
+    margin: 50px auto;
+    padding-bottom: 50px;
+    padding-top:10px;
+    background-color: rgba(255, 255, 255, 0.458);
+    color: rgb(61, 117, 139);
+    width:80vw;
+    border-radius: 20px;
     
 }
 
@@ -45,4 +53,26 @@ main{
 
 em{
     text-decoration: underline;
+}
+
+.tryAgain{
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.072);
+    width:70vw;
+    padding:2vw;
+    margin: 50px auto;
+}
+
+button{
+    padding:14px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 1vw;
+}
+
+button:hover{
+    background-color: rgb(82, 189, 222);
+    border: none;
 }

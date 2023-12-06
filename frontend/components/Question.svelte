@@ -82,7 +82,7 @@
         border-radius: 20px;
         margin: 30px auto;
         background-color: rgba(63, 63, 63, 0.149);
-        box-shadow: 2px 3px 10px rgba(255, 255, 255, 0.61);
+        box-shadow: 1px 1px 10px rgba(55, 55, 55, 0.61);
     }
 
     div p {

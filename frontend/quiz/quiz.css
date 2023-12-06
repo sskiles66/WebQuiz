@@ -13,6 +13,8 @@ body {
     margin: 0;
     background: rgb(106,230,255);
     background: linear-gradient(99deg, rgba(106,230,255,1) 0%, rgba(57,114,171,1) 100%);
+    font-family: Roboto, sans-serif;
+    color:white;
 }
 
 #button-cont {
@@ -95,4 +97,10 @@ body {
 
 #home-button:hover, #again-button:hover{
     background-color: #535758;
+}
+
+.intro{
+    margin: 20px auto;
+    width:54ch;
+    font-size: 1.5em;
 }
