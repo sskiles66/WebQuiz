@@ -1,5 +1,22 @@
 POST http://localhost:6969/api/quiz
 Content-Type: application/json
+Content-Length: 88
+Connection: Keep-Alive
+User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)
+Accept-Encoding: br,deflate,gzip,x-gzip
+
+{
+  "currentScore": 69,
+  "userId": "656a4d7a48b8f541822c0f37",
+  "date": "2023-10-10"
+}
+
+<> 2023-12-05T120226.201.json
+
+###
+
+POST http://localhost:6969/api/quiz
+Content-Type: application/json
 Content-Length: 64
 Connection: Keep-Alive
 User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.9)

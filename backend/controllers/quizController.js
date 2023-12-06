@@ -19,12 +19,14 @@ const postScores = (async (req, res) => {
         const {currentScore, userId} = req.body;
         console.log(currentScore, "1")
         console.log(userId, "userID")
+        const date = new Date()
 
         // console.log(currentScore, "1")
 
         const quiz = await Quiz.create({
             currentScore,
-            userId
+            userId,
+            date
         })
 
         console.log(quiz, "quiz")

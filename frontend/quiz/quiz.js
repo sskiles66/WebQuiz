@@ -64,6 +64,8 @@ function checkQuestions(formData) {
     results.classList.add("show");
     score.textContent = `Your score is ${correct} / 10`
     // window.location.href = '/'; // Redirect to homepage
+
+    sendQuizScores(correct)
 }
 
 // prevent default
@@ -76,13 +78,14 @@ function checkQuestions(formData) {
 async function sendQuizScores(quizScore) {
     let userData = JSON.parse(localStorage.getItem('userData'));
     let userId = userData._id
+    const date = new Date()
 
     const response = await fetch("http://localhost:6969/api/quiz", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({currentScore: quizScore, userId: userId}),
+        body: JSON.stringify({currentScore: quizScore, userId: userId, date}),
         credentials: "include",
     });
 
@@ -94,7 +97,3 @@ async function sendQuizScores(quizScore) {
     const userQuizScores = await response.json();
     console.log(userQuizScores);
 }
-
-document.querySelector("#quizSubmit").addEventListener("click", () => {
-    sendQuizScores(correct)
-})
