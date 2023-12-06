@@ -21,7 +21,7 @@
     <h3>{question.questionTitle}</h3>
     <ul class="choices">
         <li class="choice">
-            <label
+            <label class="radio"
             ><input type="radio" name={question.id} value={allQuestions[0]} bind:group={answer}/><span
             >{allQuestions[0]}</span
 
@@ -29,21 +29,21 @@
             >
         </li>
         <li class="choice">
-            <label
+            <label class="radio"
             ><input type="radio" name={question.id} value={allQuestions[1]} bind:group={answer}/><span
             >{allQuestions[1]}</span
             ></label
             >
         </li>
         <li class="choice">
-            <label
+            <label class="radio"
             ><input type="radio" name={question.id} value={allQuestions[2]} bind:group={answer}/><span
             >{allQuestions[2]}</span
             ></label
             >
         </li>
         <li class="choice">
-            <label
+            <label class="radio"
             ><input type="radio" name={question.id} value={allQuestions[3]} bind:group={answer}/><span
             >{allQuestions[3]}</span
             ></label
@@ -56,13 +56,13 @@
 
     h3 {
         margin-left: 2vw;
-        font-family: Orbitron, sans-serif;
+        color: white;
     }
 
     .choices {
-        border-top: 2px solid gainsboro;
+        border-top: 1px solid rgba(255, 255, 255, 0.699);
         list-style: none;
-        background-color: #393D3F;
+        background-color: #393d3f00;
         margin: 0;
         padding-bottom: 10px;
         border-bottom-left-radius: 18px;
@@ -72,16 +72,17 @@
     .choice {
         font-family: Roboto, sans-serif;
         margin: .9vw;
-        color: #9BF9FA;
+        color: rgb(0, 0, 0);
+        
     }
 
     div {
         width: 50vw;
-        border: 2px solid gainsboro;
+        padding: 5px;
         border-radius: 20px;
         margin: 30px auto;
-        background-color: #9BF9FA;
-
+        background-color: rgba(254, 254, 254, 0.149);
+        box-shadow: 2px 3px 10px rgba(255, 255, 255, 0.61);
     }
 
     div p {

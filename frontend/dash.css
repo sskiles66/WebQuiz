@@ -8,6 +8,77 @@ body {
     margin: 0;
 }
 
+#pretty::before{
+    content: "";
+    display: block;
+    background-color:rgba(57, 114, 171, 0.591) ;
+    width:30px;
+    height: 30px;
+    border-radius: 50px;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    animation: blur 8s infinite;
+}
+
+#pretty2::before{
+    content: "";
+    display: block;
+    background-color:rgba(99, 194, 218, 0.591) ;
+    width:100px;
+    height: 100px;
+    border-radius: 50px;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    animation: blur2 15s infinite;
+}
+#pretty::after{
+    content: "";
+    display: block;
+    background-color:rgba(57, 114, 171, 0.591) ;
+    width:50px;
+    height: 50px;
+    border-radius: 50px;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    animation: blur2 4s infinite;
+}
+#pretty2::after{
+    content: "";
+    display: block;
+    background-color:rgba(137, 235, 255, 0.591) ;
+    width:70px;
+    height: 70px;
+    border-radius: 50px;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    animation: blur 10s infinite;
+}
+@keyframes blur{
+    0%{
+        transform: translate(12px, 20px);
+    }
+   
+    50%{
+        transform: translate(350px, 360px);
+    }
+   
+    100%{
+        transform: translate(12px, 20px);
+    }
+}
+@keyframes blur2{
+    0%{
+        transform: translate(0px, 20px);
+    }
+   
+    50%{
+        transform: translate(450px, 60px);
+    }
+   
+    100%{
+        transform: translate(0px, 20px);
+    }
+}
 main {
     color:white;
     display: grid;
@@ -27,7 +98,7 @@ h1 {
     font-family: Orbitron, sans-serif;
 }
 #fancy-smancy{
-    margin: 0 auto;
+    margin: 10vw auto;
     height:25vw;
 }
 
@@ -38,13 +109,22 @@ h1 {
     border: 2px solid white;
     border-radius: 10px;
     font-size: 1vw;
+    margin-left: 6vw;
 }
+
+#fancy-smancy button:hover{
+    background-color: rgb(82, 189, 222);
+    border: none;
+}
+
+
 p {
     color: white;
     border-top: 1px solid white;
     font-family: Assistant, sans-serif;
     width: 25ch;
-    font-size: 3vw;
+    font-size: 4vw;
+    margin-left: 6vw;
 }
 svg{
     fill:white;

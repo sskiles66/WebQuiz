@@ -11,7 +11,8 @@
 
 body {
     margin: 0;
-    background-color: #F7FFF7;
+    background: rgb(106,230,255);
+    background: linear-gradient(99deg, rgba(106,230,255,1) 0%, rgba(57,114,171,1) 100%);
 }
 
 #button-cont {
@@ -22,9 +23,9 @@ body {
 #quizSubmit {
     margin-bottom: 30px;
     padding: 15px 20px;
-    background-color: #393D3F;
-    color: #9BF9FA;
-    border: none;
+    background-color: #393d3f00;
+    color: white;
+    border: 1px solid white;
     border-radius: 5px;
     font-size: 16px;
     text-transform: uppercase;
@@ -33,7 +34,7 @@ body {
 }
 
 #quizSubmit:hover {
-    background-color: #2B2E30; /* Darker shade of the original color */
+    background-color: #417ca3; /* Darker shade of the original color */
 }
 
 .hidden{
@@ -60,11 +61,11 @@ body {
 }
 
 .good{
-    background-color: chartreuse;
+    background-color: rgb(209, 245, 174);
 }
 
 .bad{
-    background-color: crimson;
+    background-color: rgb(209, 110, 128);
 }
 
 #home-button{

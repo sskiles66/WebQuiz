@@ -3,10 +3,10 @@
 </script>
 
 
-<div id="footer-cont">
+<footer id="footer-cont">
     <img src="../images/logo.png" alt="logo">
     <h2>WebQuiz</h2>
-</div>
+</footer>
 
 
 <style>
@@ -31,6 +31,13 @@
 
     img {
         width: 50px;
+    }
+
+    footer{
+        position: sticky;
+        left: 0;
+        bottom: 0;
+        width: 100%;
     }
 
 
