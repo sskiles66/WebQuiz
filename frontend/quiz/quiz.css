@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300&display=swap');
+
 .appear{
     opacity: 1;
     transition: opacity .3s;
@@ -11,7 +13,10 @@
 
 body {
     margin: 0;
-    background-color: #F7FFF7;
+    background: rgb(106,230,255);
+    background: linear-gradient(99deg, rgba(106,230,255,1) 0%, rgba(57,114,171,1) 100%);
+    font-family: Assistant, sans-serif;
+    color:white;
 }
 
 #button-cont {
@@ -22,9 +27,9 @@ body {
 #quizSubmit {
     margin-bottom: 30px;
     padding: 15px 20px;
-    background-color: #393D3F;
-    color: #9BF9FA;
-    border: none;
+    background-color: #393d3f00;
+    color: white;
+    border: 1px solid white;
     border-radius: 5px;
     font-size: 16px;
     text-transform: uppercase;
@@ -33,7 +38,7 @@ body {
 }
 
 #quizSubmit:hover {
-    background-color: #2B2E30; /* Darker shade of the original color */
+    background-color: #417ca3; /* Darker shade of the original color */
 }
 
 .hidden{
@@ -47,7 +52,7 @@ body {
     align-self: center;
     justify-content: center;
     background-color: #9BF9FA;
-    border: black 2px solid;
+    border: white 2px solid;
     border-radius: 5px;
     transition: width, height 0.5s ease;
     position: fixed;
@@ -60,15 +65,15 @@ body {
 }
 
 .good{
-    background-color: chartreuse;
+    background-color: rgb(166, 196, 136);
 }
 
 .bad{
-    background-color: crimson;
+    background-color: rgb(209, 110, 128);
 }
 
 #home-button{
-    background-color: #393D3F;
+    background-color: #ffffff31;
     color: white;
     text-decoration: none;
     padding: 15px 20px;
@@ -77,11 +82,11 @@ body {
     width: 7%;
     height: 30%;
     justify-self: center;
-    margin-right: 10px;
+    margin: 10px;
 }
 
 #again-button{
-    background-color: #393D3F;
+    background-color: #ffffff31;
     color: white;
     text-decoration: none;
     padding: 15px 20px;
@@ -93,5 +98,19 @@ body {
 }
 
 #home-button:hover, #again-button:hover{
-    background-color: #535758;
+    background-color: rgba(54, 54, 54, 0.193);
+}
+
+.intro{
+    margin: 20px auto;
+    width:64ch;
+    font-size: 1.5em;
+}
+
+#results{
+    padding: 15px 40px;
+}
+
+#results h1{
+    margin-bottom: 30px;
 }
