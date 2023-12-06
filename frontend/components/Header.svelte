@@ -114,8 +114,6 @@
 </script>
 
 <nav>
-
-
     <div id="left">
         <img src="../images/logo.svg" alt="logo">
         <h1>WEB QUIZ</h1>
@@ -132,7 +130,6 @@
                             <button on:click={showLoginForm} id="loginDrop">Log In</button>
                             {#if showLogin}
                                 <form transition:slide on:submit|preventDefault={loginUser} method="post">
-
                                     <h2>Login</h2>
 
                                     <label for="account_email">Email: </label><br>
@@ -142,13 +139,11 @@
                                     <input type="password" id="account_password" name="account_password" required><br>
 
                                     <input id="loginButton" type="submit" value="Log In">
-
                                 </form>
                             {/if}
                             <button on:click={showSignUpForm} id="signUpDrop">Sign Up</button>
                             {#if showSignUp}
                                 <form transition:slide on:submit|preventDefault={toggleSignUp}>
-
                                     <h2>Sign Up</h2>
 
                                     <label for="account_firstname">First name: </label><br>
@@ -164,7 +159,6 @@
                                     <input type="password" id="account_password" name="account_password" required><br>
 
                                     <input id="signUpButton" type="submit" value="Sign Up">
-
                                     {#if signUpError}
                                         <p>{signUpError}</p>
                                     {/if}
@@ -182,14 +176,13 @@
         <a href="../summary/index.html">Summary</a>
         <a href="../quiz/index.html">Quiz</a>
     </div>
-
 </nav>
 
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
-    h1, h2, h3 {
+    h1, h2 {
         font-family: 'Orbitron', sans-serif;
         color: white;
     }
@@ -238,12 +231,6 @@
         text-decoration: underline;
     }
 
-    #login-icon {
-        width: 20px; /* Adjust as needed */
-        height: 20px; /* Adjust as needed */
-        cursor: pointer;
-    }
-
     #login-cont {
         cursor: pointer;
     }
@@ -254,10 +241,6 @@
         background-color: transparent;
         color: white;
         font-size: 90%;
-    }
-
-    #login-icon:hover {
-        cursor: pointer;
     }
 
     #login-cont {
@@ -319,7 +302,7 @@
         color: #9BF9FA;
     }
 
-    form input, form select, form textarea {
+    form input {
         width: 100%;
         padding: 10px;
         margin-bottom: 10px;
