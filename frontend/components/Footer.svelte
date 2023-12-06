@@ -3,10 +3,10 @@
 </script>
 
 
-<div id="footer-cont">
-    <img src="../images/logo.png" alt="logo">
+<footer id="footer-cont">
+    <img src="../images/logo.svg" alt="logo">
     <h2>WebQuiz</h2>
-</div>
+</footer>
 
 
 <style>
@@ -16,12 +16,12 @@
 
     h1, h2, h3 {
         font-family: 'Orbitron', sans-serif;
+        color: white;
     }
 
     #footer-cont {
         display: flex;
         justify-content: center;
-        background-color: #9BF9FA;
         align-items: center;
     }
 
@@ -31,6 +31,13 @@
 
     img {
         width: 50px;
+    }
+
+    footer{
+        position: sticky;
+        left: 0;
+        bottom: 0;
+        width: 100%;
     }
 
 

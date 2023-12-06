@@ -119,71 +119,69 @@
 
 
     <div id="left">
-        <img src="../images/logo.png" alt="logo">
-        <h1>WebQuiz</h1>
+        <img src="../images/logo.svg" alt="logo">
+        <h1>WEB QUIZ</h1>
     </div>
 
     <div id="right">
-        <a href="#">Home</a>
-        <a href="#">Quiz</a>
-        <a href="#">Summary</a>
-    </div>
-
-    <div id="login-cont">
-        <button id="loginIconButton" on:click={toggleDropdown}><img id="login-icon"
-                                                                    src="../images/black-login-icon--0.png"
-                                                                    alt="logo icon"></button>
-        {#if showDropdown}
-            <div transition:slide class="dropdown" style="position: absolute; top: 155%;">
-                <div class="dropdown-header">
-                    <button on:click={showLoginForm} id="loginDrop">Log In ></button>
-                    {#if showLogin}
-                        <form transition:slide on:submit|preventDefault={loginUser} method="post">
-
-                            <h2>Login In</h2>
-
-                            <label for="account_email">Email: </label><br>
-                            <input type="email" id="account_email" name="account_email" required><br>
-
-                            <label for="account_password">Password: </label><br>
-                            <input type="password" id="account_password" name="account_password" required><br>
-
-                            <input id="loginButton" type="submit" value="Log In">
-
-                        </form>
-                    {/if}
-                    <button on:click={showSignUpForm} id="signUpDrop">Sign Up ></button>
-                    {#if showSignUp}
-                        <form transition:slide on:submit|preventDefault={toggleSignUp}>
-
-                            <h2>Sign Up</h2>
-
-                            <label for="account_firstname">First name: </label><br>
-                            <input type="text" id="account_firstname" name="account_firstname" required><br>
-
-                            <label for="account_lastname">Last Name: </label><br>
-                            <input type="text" id="account_lastname" name="account_lastname" required><br>
-
-                            <label for="account_email">Email: </label><br>
-                            <input type="email" id="account_email" name="account_email" required><br>
-
-                            <label for="account_password">Password: </label><br>
-                            <input type="password" id="account_password" name="account_password" required><br>
-
-                            <input id="signUpButton" type="submit" value="Sign Up">
-
-                            {#if signUpError}
-                                <p>{signUpError}</p>
-                            {/if}
-                        </form>
-                    {/if}
-                    {#if userData}
-                        <button on:click={logoutUser}>Logout</button>
-                    {/if}
+        <div id="login-cont">
+            <button id="loginIconButton" on:click={toggleDropdown}>Login</button>
+            {#if showDropdown}
+                <div transition:slide class="dropdown" style="position: absolute; top: 100%; width:400px; border-radius:20px;">
+                    <div class="dropdown-header">
+                        <button on:click={showLoginForm} id="loginDrop">Log In</button>
+                        {#if showLogin}
+                            <form transition:slide on:submit|preventDefault={loginUser} method="post">
+    
+                                <h2>Login</h2>
+    
+                                <label for="account_email">Email: </label><br>
+                                <input type="email" id="account_email" name="account_email" required><br>
+    
+                                <label for="account_password">Password: </label><br>
+                                <input type="password" id="account_password" name="account_password" required><br>
+    
+                                <input id="loginButton" type="submit" value="Log In">
+    
+                            </form>
+                        {/if}
+                        <button on:click={showSignUpForm} id="signUpDrop">Sign Up </button>
+                        {#if showSignUp}
+                            <form transition:slide on:submit|preventDefault={toggleSignUp}>
+    
+                                <h2>Sign Up</h2>
+    
+                                <label for="account_firstname">First name: </label><br>
+                                <input type="text" id="account_firstname" name="account_firstname" required><br>
+    
+                                <label for="account_lastname">Last Name: </label><br>
+                                <input type="text" id="account_lastname" name="account_lastname" required><br>
+    
+                                <label for="account_email">Email: </label><br>
+                                <input type="email" id="account_email" name="account_email" required><br>
+    
+                                <label for="account_password">Password: </label><br>
+                                <input type="password" id="account_password" name="account_password" required><br>
+    
+                                <input id="signUpButton" type="submit" value="Sign Up">
+    
+                                {#if signUpError}
+                                    <p>{signUpError}</p>
+                                {/if}
+                            </form>
+                        {/if}
+                        {#if userData}
+                            <button on:click={logoutUser}>Logout</button>
+                        {/if}
+                    </div>
                 </div>
-            </div>
-        {/if}
+            {/if}
+        </div>
+        <a href="../index.html">Home</a>
+        <a href="../summary/index.html">Summary</a>
+        <a href="../quiz/index.html">Quiz</a>
     </div>
+
 </nav>
 
 
@@ -192,6 +190,7 @@
 
     h1, h2, h3 {
         font-family: 'Orbitron', sans-serif;
+        color:white;
     }
 
     p, a {
@@ -200,8 +199,7 @@
 
     nav {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        background-color: #9BF9FA;
+        grid-template-columns: 1fr 2fr;
         align-items: center;
 
     }
@@ -218,22 +216,25 @@
 
     #right {
         display: flex;
-        background-color: #393D3F;
 
         border-radius: 10px;
-        margin: 0 auto;
+        margin-left: 35vw;
         width: 300px;
         justify-content: center;
+    }
+
+    #right a{
+        margin-top:10px;
     }
 
     #right > * {
         padding: 10px;
         text-decoration: none;
-        color: #9BF9FA;
+        color: white;
     }
 
     #right > *:hover {
-        background-color: #535758;
+        text-decoration: underline;
     }
 
     #login-icon {
@@ -247,9 +248,11 @@
     }
 
     #loginIconButton {
-        background-color: #9BF9FA;
-        border: none;
-        padding: 0;
+        border: 1px solid white;
+        padding: 10px 20px;
+        background-color: transparent;
+        color: white;
+        font-size: 90%;
     }
 
     #login-icon:hover {
@@ -262,7 +265,7 @@
     }
 
     img {
-        width: 50px;
+        width: 30px;
     }
 
     button {
@@ -270,8 +273,7 @@
     }
 
     .dropdown {
-        background-color: #393D3F;
-        width: 100%;
+        width: 400px;
         text-align: left;
     }
 
@@ -288,17 +290,22 @@
     #loginDrop, #signUpDrop {
         display: block;
         padding: 10px;
-        background-color: #9BF9FA;
+        background-color:rgba(255, 255, 255, 0);
+        border: 1px solid white;
+        color: white;
+        margin: 10px auto;
+        width:100px;
 
     }
 
     #loginDrop:hover, #signUpDrop:hover {
-        background-color: #bafeff;
+        background-color: #126087;
+        color: white;
         cursor: pointer;
     }
 
     form {
-        background-color: #393D3F;
+        background-color: #323334;
         padding: 20px;
         border-radius: 5px;
         color: #9BF9FA;
