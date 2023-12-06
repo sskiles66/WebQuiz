@@ -189,7 +189,7 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
-    h1, h2, h3 {
+    h1, h2 {
         font-family: 'Orbitron', sans-serif;
         color: white;
     }
@@ -238,12 +238,6 @@
         text-decoration: underline;
     }
 
-    #login-icon {
-        width: 20px; /* Adjust as needed */
-        height: 20px; /* Adjust as needed */
-        cursor: pointer;
-    }
-
     #login-cont {
         cursor: pointer;
     }
@@ -254,10 +248,6 @@
         background-color: transparent;
         color: white;
         font-size: 90%;
-    }
-
-    #login-icon:hover {
-        cursor: pointer;
     }
 
     #login-cont {
@@ -319,7 +309,7 @@
         color: #9BF9FA;
     }
 
-    form input, form select, form textarea {
+    form input {
         width: 100%;
         padding: 10px;
         margin-bottom: 10px;
