@@ -65,7 +65,7 @@ body {
 }
 
 .good{
-    background-color: rgb(209, 245, 174);
+    background-color: rgb(166, 196, 136);
 }
 
 .bad{
@@ -98,7 +98,7 @@ body {
 }
 
 #home-button:hover, #again-button:hover{
-    background-color: rgb(170, 56, 77);
+    background-color: rgba(54, 54, 54, 0.193);
 }
 
 .intro{
