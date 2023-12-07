@@ -72,12 +72,13 @@
 
 <style>
     table {
-        background-color: rgba(240, 248, 255, 0.427);
+        background-color: rgba(63, 63, 63, 0.149);
         margin: 10px auto;
         padding: 20px 0;
         width: 50%;
         border-radius: 20px;
         box-shadow: 1px 5px 2px rgb(255, 255, 255);
+        margin-bottom: 50px;
     }
 
     thead {

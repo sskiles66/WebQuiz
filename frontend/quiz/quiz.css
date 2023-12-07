@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300&display=swap');
 
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: white;
+}
+
 .appear{
     opacity: 1;
     transition: opacity .3s;
