@@ -22,6 +22,7 @@ body {
     background: linear-gradient(99deg, rgba(106,230,255,1) 0%, rgba(57,114,171,1) 100%);
     font-family: Assistant, sans-serif;
     color:white;
+    height: 1vh;
 }
 
 #button-cont {
