@@ -10,13 +10,14 @@ renderQuestions();
 // submit handler on form (use the formData like in sleepoutside)
 
 
-document.forms["quiz"].addEventListener("submit", (e) => {
+var formSubmitHandler = function(e) {
     e.preventDefault();
-    // e.target would contain our form in this case
     var formStuff = formDataToJSON(e.target);
     checkQuestions(formStuff);
+    document.forms["quiz"].removeEventListener("submit", formSubmitHandler);
+};
 
-});
+document.forms["quiz"].addEventListener("submit", formSubmitHandler);
 
 
 function formDataToJSON(formElement) {
