@@ -8,6 +8,9 @@
     let showLogin = false;
     let showSignUp = false;
     let signUpError = "";
+    let loginErr = "";
+    let signupSuccess = "";
+    let loginSuccess = "";
 
     function toggleDropdown() {
         showDropdown = !showDropdown;
@@ -78,6 +81,7 @@
         });
 
         if (!response.ok) {
+            loginErr = "Login failed";
             throw new Error("Login failed");
         }
 
@@ -139,6 +143,9 @@
                                     <input type="password" id="account_password" name="account_password" required><br>
 
                                     <input id="loginButton" type="submit" value="Log In">
+                                    {#if loginErr}
+                                        <p>{loginErr}</p>
+                                    {/if}
                                 </form>
                             {/if}
                             <button on:click={showSignUpForm} id="signUpDrop">Sign Up</button>
@@ -175,9 +182,11 @@
         <a href="../index.html">Home</a>
         <a href="../summary/index.html">Summary</a>
         <a href="../quiz/index.html">Quiz</a>
+        {#if userData}
+            <p class="welcome">Welcome, <span class="capitalize">{userData.name}</span></p>
+        {/if}
     </div>
 </nav>
-
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
@@ -193,7 +202,7 @@
 
     nav {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
 
     }
@@ -210,15 +219,9 @@
 
     #right {
         display: flex;
-
         border-radius: 10px;
-        margin-left: 35vw;
-        width: 300px;
         justify-content: center;
-    }
-
-    #right a {
-        margin-top: 10px;
+        align-items: center;
     }
 
     #right > * {
