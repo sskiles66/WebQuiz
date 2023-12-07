@@ -69,8 +69,6 @@ if (loggedIn === true) {
 
     if (data.summary.length !== 0) {
 
-        console.log(data.summary);
-
         document.querySelector("#numberOfAttempts").innerHTML = data.summary.length;
 
         document.querySelector("#highScore").innerHTML = getHighScore(data.summary);

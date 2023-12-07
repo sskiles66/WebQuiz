@@ -9,6 +9,8 @@
     let showSignUp = false;
     let signUpError = "";
     let loginErr = "";
+    let signupSuccess = "";
+    let loginSuccess = "";
 
     function toggleDropdown() {
         showDropdown = !showDropdown;
@@ -79,7 +81,7 @@
         });
 
         if (!response.ok) {
-            loginErr = "Login failed"
+            loginErr = "Login failed";
             throw new Error("Login failed");
         }
 
@@ -180,6 +182,9 @@
         <a href="../index.html">Home</a>
         <a href="../summary/index.html">Summary</a>
         <a href="../quiz/index.html">Quiz</a>
+        {#if userData}
+            <p class="welcome">Welcome, <span class="capitalize">{userData.name}</span></p>
+        {/if}
     </div>
 </nav>
 
@@ -197,7 +202,7 @@
 
     nav {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
 
     }
@@ -214,15 +219,9 @@
 
     #right {
         display: flex;
-
         border-radius: 10px;
-        margin-left: 35vw;
-        width: 300px;
         justify-content: center;
-    }
-
-    #right a {
-        margin-top: 10px;
+        align-items: center;
     }
 
     #right > * {
