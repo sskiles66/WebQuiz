@@ -8,6 +8,7 @@
     let showLogin = false;
     let showSignUp = false;
     let signUpError = "";
+    let loginErr = "";
 
     function toggleDropdown() {
         showDropdown = !showDropdown;
@@ -78,6 +79,7 @@
         });
 
         if (!response.ok) {
+            loginErr = "Login failed"
             throw new Error("Login failed");
         }
 
@@ -139,6 +141,9 @@
                                     <input type="password" id="account_password" name="account_password" required><br>
 
                                     <input id="loginButton" type="submit" value="Log In">
+                                    {#if loginErr}
+                                        <p>{loginErr}</p>
+                                    {/if}
                                 </form>
                             {/if}
                             <button on:click={showSignUpForm} id="signUpDrop">Sign Up</button>
@@ -177,7 +182,6 @@
         <a href="../quiz/index.html">Quiz</a>
     </div>
 </nav>
-
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
