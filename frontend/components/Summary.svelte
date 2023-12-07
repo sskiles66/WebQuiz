@@ -39,33 +39,54 @@
 
 <table>
     {#if userData}
-    <thead>
-    <tr>
-        <td>date</td>
-        <td>score</td>
-    </tr>
-    </thead>
-    <tbody>
-    {#await displayUserSummary()}
+        <thead>
         <tr>
-            <td>Loading</td>
+            <td>DATE</td>
+            <td>SCORE</td>
         </tr>
-
-    {:then data}
-        {#each data.summary as item}
+        </thead>
+        <tbody>
+        {#await displayUserSummary()}
             <tr>
-                <td>{item.date.slice(0, 10)}</td>
-                <td>{item.currentScore}</td>
+                <td>Loading</td>
             </tr>
-        {/each}
 
-    {:catch err}
-        <tr>
-            <td>Error {err}</td>
-        </tr>
-    {/await}
-    </tbody>
-        {:else}
+        {:then data}
+            {#each data.summary as item}
+                <tr>
+                    <td>{item.date.slice(0, 10)}</td>
+                    <td>{item.currentScore}</td>
+                </tr>
+            {/each}
+
+        {:catch err}
+            <tr>
+                <td>Error {err}</td>
+            </tr>
+        {/await}
+        </tbody>
+    {:else}
         <h1>Please <a href="/">log in</a></h1>
     {/if}
 </table>
+
+<style>
+    table {
+        background-color: rgba(240, 248, 255, 0.427);
+        margin: 10px auto;
+        padding: 20px 0;
+        width: 50%;
+        border-radius: 20px;
+        box-shadow: 1px 5px 2px rgb(255, 255, 255);
+    }
+
+    thead {
+        background: rgba(240, 248, 255, 0.2)
+    }
+
+    td {
+        border: 1px solid rgba(240, 248, 255, 0.427);
+        font-size: 1.6rem
+    }
+
+</style>

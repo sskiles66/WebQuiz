@@ -2,85 +2,86 @@
 
 body {
     margin: 0;
-    background: rgb(106,230,255);
-    background: linear-gradient(99deg, rgba(106,230,255,1) 0%, rgba(57,114,171,1) 100%);
+    background: rgb(106, 230, 255);
+    background: linear-gradient(99deg, rgba(106, 230, 255, 1) 0%, rgba(57, 114, 171, 1) 100%);
     color: white;
     font-family: Assistant, sans-serif;
 }
 
-.stat-list{
-    display:grid;
+.stat-list {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap:5px;
-    width:90%;
-    height:200px;
-    padding:20px;
+    gap: 5px;
+    width: 90%;
+    height: 200px;
+    padding: 20px;
     margin: 0 auto;
     border-radius: 15px;
     list-style-type: none;
     color: white;
-    
+
 }
 
-.stat-list div p{
+.stat-list div p {
     width: 20ch;
 }
 
-.stat-list div h2{
+.stat-list div h2 {
     font-size: 5em;
     margin: 0;
     padding: 0;
 }
 
-.stat-list div{
+.stat-list div {
     background-color: rgba(240, 248, 255, 0.427);
     margin: 10px auto;
-    padding: 20px 0px;
-    width:50%;
+    padding: 20px 0;
+    width: 92%;
     border-radius: 20px;
     box-shadow: 1px 5px 2px rgb(255, 255, 255);
 }
-#stats{
+
+#stats {
     margin: 50px auto;
     padding-bottom: 50px;
-    padding-top:10px;
+    padding-top: 10px;
     color: rgb(61, 117, 139);
-    width:70vw;
+    width: 70vw;
     border-radius: 20px;
-    height:380px;
-    
+    height: 380px;
+
 }
 
-main p{
-    width:50ch;
+main p {
+    width: 50ch;
     font-size: 1.5em;
     margin: 0 auto;
 }
 
-main h1{
+main h1 {
     text-transform: uppercase;
     font-size: 2.6em;
 }
 
-main{
+main {
     text-align: center;
 }
 
-em{
+em {
     text-decoration: underline;
 }
 
-.tryAgain{
+.tryAgain {
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.072);
-    width:70vw;
-    padding:2vw;
+    width: 70vw;
+    padding: 2vw;
     margin: 10px auto 80px auto;
 }
 
 
-.tryAgain button{
-    padding:14px;
+.tryAgain button {
+    padding: 14px;
     color: white;
     background-color: rgba(255, 255, 255, 0);
     border: 2px solid white;
@@ -90,7 +91,7 @@ em{
 }
 
 
-.tryAgain button:hover{
+.tryAgain button:hover {
     background-color: rgb(82, 189, 222);
     border: none;
 }

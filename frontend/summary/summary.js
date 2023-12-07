@@ -1,5 +1,5 @@
-import { get } from 'svelte/store';
-import {renderHeaderFooter} from '../utils.mjs';
+import {renderHeaderFooter} from "../utils.mjs";
+import Summary from "../components/Summary.svelte";
 
 renderHeaderFooter();
 
@@ -15,22 +15,22 @@ function checkUserData() {
     }
 }
 
-function getHighScore(data){
+function getHighScore(data) {
     let highScore = -1;
     data.forEach(element => {
-       if (element.currentScore > highScore){
-        highScore = element.currentScore;
-       }
+        if (element.currentScore > highScore) {
+            highScore = element.currentScore;
+        }
     });
 
     return highScore;
 
 }
 
-function getAverageScore(data){
+function getAverageScore(data) {
     let total = 0;
     data.forEach(element => {
-       total += element.currentScore;
+        total += element.currentScore;
     });
 
 
@@ -64,11 +64,11 @@ async function getUserSummary() {
     }
 }
 
-if (loggedIn == true){
+if (loggedIn === true) {
     const data = await getUserSummary();
 
-    if (data.summary.length != 0){
-        
+    if (data.summary.length !== 0) {
+
         console.log(data.summary);
 
         document.querySelector("#numberOfAttempts").innerHTML = data.summary.length;
@@ -79,15 +79,17 @@ if (loggedIn == true){
 
         document.querySelector("#averageScore").innerHTML = getAverageScore(data.summary);
 
-        document.querySelector("#lastAttempt").innerHTML = data.summary[data.summary.length - 1].currentScore;
-        
-    }else{
+        document.querySelector("#lastAttempt").innerHTML = data.summary[data.summary.length - 1].date.slice(0, 10);
+
+    } else {
         alert("You have not taken any quizzes yet.");
     }
-}else{
-    alert("You must be logged in to see your scores.")
+} else {
+    alert("You must be logged in to see your scores.");
 }
 
+const summary = new Summary({
+    target: document.querySelector("#summary"),
+});
 
-
-
+export {summary};
