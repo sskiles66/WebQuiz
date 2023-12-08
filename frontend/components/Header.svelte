@@ -119,7 +119,7 @@
 
 <nav>
     <div id="left">
-        <div id="logo"></div>
+        <img id="logo" src="../images/logo.svg">
         <h1>Web Quiz</h1>
     </div>
     <div id="right">
@@ -176,7 +176,7 @@
                             {/if}
                         {/if}
                         {#if userData}
-                            <button on:click={logoutUser}>Logout</button>
+                            <button class="logout" on:click={logoutUser}>Logout</button>
                         {/if}
                     </div>
                 </div>
@@ -306,7 +306,7 @@
         color: #9BF9FA;
     }
 
-    form input, form select, form textarea {
+    form input {
         width: 90%;
         padding: 10px;
         margin-bottom: 10px;
@@ -316,7 +316,7 @@
         color: #9BF9FA;
     }
 
-    #signUpButton, #loginButton {
+    #signUpButton, #loginButton,  .logout{
         margin: 0 auto;
         background-color: #9BF9FA;
         color: #393D3F;
@@ -328,6 +328,10 @@
 
     #signUpButton:hover, #loginButton:hover {
         background-color: #bafeff;
+    }
+
+    #logo{
+        margin-right: 6px;
     }
 
     @media screen and (max-width: 610px ){
@@ -350,22 +354,10 @@
             font-size: .9rem;
         }
 
-        #logo::before{
-            content: "";
-            display: block;
-            background-image: url("../images/logo.svg");
-            
-        }
         #loginIconButton{
             font-size: .8rem;
             padding:5px;
         }
-        #login-cont{
 
-        }
-
-        #left img{
-            margin-right:.5rem;
-        }
     }
 </style>
