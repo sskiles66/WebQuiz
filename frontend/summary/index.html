@@ -6,12 +6,17 @@
     <title>Summary</title>
     <script src="summary.js" type="module"></script>
     <link href="summary.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="images/site.webmanifest">
 </head>
 <body>
-    
-    <header id="header"></header> 
-    <main>
-    <h1>Summary</h1>
+
+<header id="header"></header>
+<main>
+    <div id="alert-banner" class="hidden"></div>
+    <h1 id="summary-head">Summary</h1>
     <p>Here is a summary of your quiz scores and attempts. Pat yourself on the back, it's not an easy quiz.</p>
     <div id="stats" class="dash-card">
         <div class="stat-list">
@@ -31,9 +36,11 @@
                 <p># of Attempts</p>
                 <h2 id="numberOfAttempts">0</h2>
             </div>
-           
+
         </div>
     </div>
+    <h2 id="history-head" style="font-size: 2.6em">Quiz History</h2>
+    <div id="summary"></div>
     <div class="tryAgain">
         <h2>Ready to Try Again?</h2>
         <p>Don't worry if you aren't pleased with the result. Try again! You can take it as often as you want. </p>

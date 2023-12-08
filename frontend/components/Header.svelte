@@ -8,6 +8,9 @@
     let showLogin = false;
     let showSignUp = false;
     let signUpError = "";
+    let loginErr = "";
+    let signupSuccess = "";
+    let loginSuccess = "";
 
     function toggleDropdown() {
         showDropdown = !showDropdown;
@@ -58,9 +61,7 @@
             throw new Error("Registration failed");
         }
 
-        console.log(response);
-        const userData = await response.json();
-        console.log(userData);
+        await response.json();
     }
 
     async function loginUser(e) {
@@ -80,6 +81,7 @@
         });
 
         if (!response.ok) {
+            loginErr = "Login failed";
             throw new Error("Login failed");
         }
 
@@ -116,8 +118,6 @@
 </script>
 
 <nav>
-
-
     <div id="left">
         <div id="logo"></div>
         <h1>Web Quiz</h1>
@@ -130,64 +130,73 @@
         <div id="login-cont">
             <button id="loginIconButton" on:click={toggleDropdown}>Login</button>
             {#if showDropdown}
-                <div transition:slide class="dropdown" style="position: absolute; top: 80%; width:400px; border-radius:20px;">
-                <div class="dropdown-header">
-                <button on:click={showLoginForm} id="loginDrop">Log In</button>
-                {#if showLogin}
-                <form transition:slide on:submit|preventDefault={loginUser} method="post">
-                <h2>Login</h2>
-                <label for="account_email">Email: </label><br>
-                <input type="email" id="account_email" name="account_email" required><br>
-        
-                <label for="account_password">Password: </label><br>
-                <input type="password" id="account_password" name="account_password" required><br>
-        
-                <input id="loginButton" type="submit" value="Log In">
-        
-                </form>
-                {/if}
-                <button on:click={showSignUpForm} id="signUpDrop">Sign Up </button>
-                {#if showSignUp}
-                <form transition:slide on:submit|preventDefault={toggleSignUp}>
-                <h2>Sign Up</h2>
-        
-                <label for="account_firstname">First name: </label><br>
-                <input type="text" id="account_firstname" name="account_firstname" required><br>
-        
-                <label for="account_lastname">Last Name: </label><br>
-                <input type="text" id="account_lastname" name="account_lastname" required><br>
-        
-                <label for="account_email">Email: </label><br>
-                <input type="email" id="account_email" name="account_email" required><br>
-        
-                <label for="account_password">Password: </label><br>
-                <input type="password" id="account_password" name="account_password" required><br>
-        
-                <input id="signUpButton" type="submit" value="Sign Up">
-        
-                {#if signUpError}
-                <p>{signUpError}</p>
-                {/if}
-                </form>
-                {/if}
-                {#if userData}
-                <button on:click={logoutUser}>Logout</button>
-                {/if}
+                <div transition:slide class="dropdown"
+                     style="position: absolute; top: 100%; width:400px; border-radius:20px;">
+                    <div class="dropdown-header">
+                        {#if !userData}
+                            <button on:click={showLoginForm} id="loginDrop">Log In</button>
+                            {#if showLogin}
+                                <form transition:slide on:submit|preventDefault={loginUser} method="post">
+                                    <h2>Login</h2>
+
+                                    <label for="account_email">Email: </label><br>
+                                    <input type="email" id="account_email" name="account_email" required><br>
+
+                                    <label for="account_password">Password: </label><br>
+                                    <input type="password" id="account_password" name="account_password" required><br>
+
+                                    <input id="loginButton" type="submit" value="Log In">
+                                    {#if loginErr}
+                                        <p>{loginErr}</p>
+                                    {/if}
+                                </form>
+                            {/if}
+                            <button on:click={showSignUpForm} id="signUpDrop">Sign Up</button>
+                            {#if showSignUp}
+                                <form transition:slide on:submit|preventDefault={toggleSignUp}>
+                                    <h2>Sign Up</h2>
+
+                                    <label for="account_firstname">First name: </label><br>
+                                    <input type="text" id="account_firstname" name="account_firstname" required><br>
+
+                                    <label for="account_lastname">Last Name: </label><br>
+                                    <input type="text" id="account_lastname" name="account_lastname" required><br>
+
+                                    <label for="account_email">Email: </label><br>
+                                    <input type="email" id="account_email" name="account_email" required><br>
+
+                                    <label for="account_password">Password: </label><br>
+                                    <input type="password" id="account_password" name="account_password" required><br>
+
+                                    <input id="signUpButton" type="submit" value="Sign Up">
+                                    {#if signUpError}
+                                        <p>{signUpError}</p>
+                                    {/if}
+                                </form>
+                            {/if}
+                        {/if}
+                        {#if userData}
+                            <button on:click={logoutUser}>Logout</button>
+                        {/if}
+                    </div>
                 </div>
-                </div>
-                {/if}
-            </div>
+            {/if}
+        </div>
+        <a href="../index.html">Home</a>
+        <a href="../summary/index.html">Summary</a>
+        <a href="../quiz/index.html">Quiz</a>
+        {#if userData}
+            <p class="welcome">Welcome, <span class="capitalize">{userData.name}</span></p>
+        {/if}
     </div>
-
 </nav>
-
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap');
 
-    h1, h2, h3 {
+    h1, h2 {
         font-family: 'Orbitron', sans-serif;
-        color:white;
+        color: white;
     }
 
     p, a {
@@ -196,7 +205,7 @@
 
     nav {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
 
     }
@@ -213,15 +222,9 @@
 
     #right {
         display: flex;
-
         border-radius: 10px;
-        margin-left: 35vw;
-        width: 300px;
         justify-content: center;
-    }
-
-    #right a{
-        margin-top:10px;
+        align-items: center;
     }
 
     #right > * {
@@ -234,12 +237,6 @@
         text-decoration: underline;
     }
 
-    #login-icon {
-        width: 20px; /* Adjust as needed */
-        height: 20px; /* Adjust as needed */
-        cursor: pointer;
-    }
-
     #login-cont {
         cursor: pointer;
     }
@@ -250,10 +247,6 @@
         background-color: transparent;
         color: white;
         font-size: 90%;
-    }
-
-    #login-icon:hover {
-        cursor: pointer;
     }
 
     #login-cont {
@@ -288,11 +281,11 @@
     #loginDrop, #signUpDrop {
         display: block;
         padding: 10px;
-        background-color:rgba(255, 255, 255, 0);
+        background-color: rgba(255, 255, 255, 0);
         border: 1px solid white;
         color: white;
         margin: 10px auto;
-        width:100px;
+        width: 100px;
 
     }
 
