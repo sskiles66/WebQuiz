@@ -119,11 +119,14 @@
 
 <nav>
     <div id="left">
-        <img src="../images/logo.svg" alt="logo">
-        <h1>WEB QUIZ</h1>
+        <img id="logo" src="../images/logo.svg">
+        <h1>Web Quiz</h1>
     </div>
-
     <div id="right">
+        <a href="../index.html">Home</a>
+        <a href="../quiz/index.html">Quiz</a>
+        <a href="../summary/index.html">Summary</a>
+        
         <div id="login-cont">
             <button id="loginIconButton" on:click={toggleDropdown}>Login</button>
             {#if showDropdown}
@@ -173,15 +176,12 @@
                             {/if}
                         {/if}
                         {#if userData}
-                            <button on:click={logoutUser}>Logout</button>
+                            <button class="logout" on:click={logoutUser}>Logout</button>
                         {/if}
                     </div>
                 </div>
             {/if}
         </div>
-        <a href="../index.html">Home</a>
-        <a href="../summary/index.html">Summary</a>
-        <a href="../quiz/index.html">Quiz</a>
         {#if userData}
             <p class="welcome">Welcome, <span class="capitalize">{userData.name}</span></p>
         {/if}
@@ -262,6 +262,7 @@
     .dropdown {
         width: 400px;
         text-align: left;
+        left:-150%;
     }
 
     .dropdown-header {
@@ -306,7 +307,7 @@
     }
 
     form input {
-        width: 100%;
+        width: 90%;
         padding: 10px;
         margin-bottom: 10px;
         border-radius: 5px;
@@ -315,7 +316,7 @@
         color: #9BF9FA;
     }
 
-    #signUpButton, #loginButton {
+    #signUpButton, #loginButton,  .logout{
         margin: 0 auto;
         background-color: #9BF9FA;
         color: #393D3F;
@@ -327,5 +328,36 @@
 
     #signUpButton:hover, #loginButton:hover {
         background-color: #bafeff;
+    }
+
+    #logo{
+        margin-right: 6px;
+    }
+
+    @media screen and (max-width: 610px ){
+        .dropdown{
+            left: -180%;
+        }
+
+        nav{
+            grid-template-columns: 1fr;
+        }
+
+        #right{
+            margin:0 auto;
+            width: 50vw;
+        }
+        #right a{
+            font-size: .8rem;
+        }
+        #left{
+            font-size: .9rem;
+        }
+
+        #loginIconButton{
+            font-size: .8rem;
+            padding:5px;
+        }
+
     }
 </style>
