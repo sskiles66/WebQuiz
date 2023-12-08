@@ -119,67 +119,64 @@
 
 
     <div id="left">
-        <img src="../images/logo.svg" alt="logo">
-        <h1>WEB QUIZ</h1>
+        <div id="logo"></div>
+        <h1>Web Quiz</h1>
     </div>
-
     <div id="right">
+        <a href="../index.html">Home</a>
+        <a href="../quiz/index.html">Quiz</a>
+        <a href="../summary/index.html">Summary</a>
+        
         <div id="login-cont">
             <button id="loginIconButton" on:click={toggleDropdown}>Login</button>
             {#if showDropdown}
-                <div transition:slide class="dropdown" style="position: absolute; top: 100%; width:400px; border-radius:20px;">
-                    <div class="dropdown-header">
-                        <button on:click={showLoginForm} id="loginDrop">Log In</button>
-                        {#if showLogin}
-                            <form transition:slide on:submit|preventDefault={loginUser} method="post">
-    
-                                <h2>Login</h2>
-    
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-    
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-    
-                                <input id="loginButton" type="submit" value="Log In">
-    
-                            </form>
-                        {/if}
-                        <button on:click={showSignUpForm} id="signUpDrop">Sign Up </button>
-                        {#if showSignUp}
-                            <form transition:slide on:submit|preventDefault={toggleSignUp}>
-    
-                                <h2>Sign Up</h2>
-    
-                                <label for="account_firstname">First name: </label><br>
-                                <input type="text" id="account_firstname" name="account_firstname" required><br>
-    
-                                <label for="account_lastname">Last Name: </label><br>
-                                <input type="text" id="account_lastname" name="account_lastname" required><br>
-    
-                                <label for="account_email">Email: </label><br>
-                                <input type="email" id="account_email" name="account_email" required><br>
-    
-                                <label for="account_password">Password: </label><br>
-                                <input type="password" id="account_password" name="account_password" required><br>
-    
-                                <input id="signUpButton" type="submit" value="Sign Up">
-    
-                                {#if signUpError}
-                                    <p>{signUpError}</p>
-                                {/if}
-                            </form>
-                        {/if}
-                        {#if userData}
-                            <button on:click={logoutUser}>Logout</button>
-                        {/if}
-                    </div>
+                <div transition:slide class="dropdown" style="position: absolute; top: 80%; width:400px; border-radius:20px;">
+                <div class="dropdown-header">
+                <button on:click={showLoginForm} id="loginDrop">Log In</button>
+                {#if showLogin}
+                <form transition:slide on:submit|preventDefault={loginUser} method="post">
+                <h2>Login</h2>
+                <label for="account_email">Email: </label><br>
+                <input type="email" id="account_email" name="account_email" required><br>
+        
+                <label for="account_password">Password: </label><br>
+                <input type="password" id="account_password" name="account_password" required><br>
+        
+                <input id="loginButton" type="submit" value="Log In">
+        
+                </form>
+                {/if}
+                <button on:click={showSignUpForm} id="signUpDrop">Sign Up </button>
+                {#if showSignUp}
+                <form transition:slide on:submit|preventDefault={toggleSignUp}>
+                <h2>Sign Up</h2>
+        
+                <label for="account_firstname">First name: </label><br>
+                <input type="text" id="account_firstname" name="account_firstname" required><br>
+        
+                <label for="account_lastname">Last Name: </label><br>
+                <input type="text" id="account_lastname" name="account_lastname" required><br>
+        
+                <label for="account_email">Email: </label><br>
+                <input type="email" id="account_email" name="account_email" required><br>
+        
+                <label for="account_password">Password: </label><br>
+                <input type="password" id="account_password" name="account_password" required><br>
+        
+                <input id="signUpButton" type="submit" value="Sign Up">
+        
+                {#if signUpError}
+                <p>{signUpError}</p>
+                {/if}
+                </form>
+                {/if}
+                {#if userData}
+                <button on:click={logoutUser}>Logout</button>
+                {/if}
                 </div>
-            {/if}
-        </div>
-        <a href="../index.html">Home</a>
-        <a href="../summary/index.html">Summary</a>
-        <a href="../quiz/index.html">Quiz</a>
+                </div>
+                {/if}
+            </div>
     </div>
 
 </nav>
@@ -275,6 +272,7 @@
     .dropdown {
         width: 400px;
         text-align: left;
+        left:-150%;
     }
 
     .dropdown-header {
@@ -319,7 +317,7 @@
     }
 
     form input, form select, form textarea {
-        width: 100%;
+        width: 90%;
         padding: 10px;
         margin-bottom: 10px;
         border-radius: 5px;
@@ -340,5 +338,44 @@
 
     #signUpButton:hover, #loginButton:hover {
         background-color: #bafeff;
+    }
+
+    @media screen and (max-width: 610px ){
+        .dropdown{
+            left: -180%;
+        }
+
+        nav{
+            grid-template-columns: 1fr;
+        }
+
+        #right{
+            margin:0 auto;
+            width: 50vw;
+        }
+        #right a{
+            font-size: .8rem;
+        }
+        #left{
+            font-size: .9rem;
+        }
+
+        #logo::before{
+            content: "";
+            display: block;
+            background-image: url("../images/logo.svg");
+            
+        }
+        #loginIconButton{
+            font-size: .8rem;
+            padding:5px;
+        }
+        #login-cont{
+
+        }
+
+        #left img{
+            margin-right:.5rem;
+        }
     }
 </style>
