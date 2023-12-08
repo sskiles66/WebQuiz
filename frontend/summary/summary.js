@@ -85,7 +85,12 @@ if (loggedIn === true) {
         alert("You have not taken any quizzes yet.");
     }
 } else {
-    alert("You must be logged in to see your scores.");
+    let alert = document.createElement('p');
+    alert.classList.add('banner-text');
+    alert.textContent = "You need to log in to see your stats.";
+    let banner = document.querySelector("#alert-banner");
+    banner.classList.remove("hidden");
+    banner.appendChild(alert);
 }
 
 const summary = new Summary({

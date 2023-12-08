@@ -8,6 +8,22 @@ body {
     font-family: Assistant, sans-serif;
 }
 
+#alert-banner{
+    width: 60%;
+    text-align: center;
+    border: white 2px solid;
+    margin:auto;
+}
+
+#banner-btn{
+    left: 14rem;
+    position:relative;
+}
+
+.banner-text{
+    text-align:center;
+}
+
 .stat-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
