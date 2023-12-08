@@ -182,9 +182,6 @@
                 </div>
             {/if}
         </div>
-        <a href="../index.html">Home</a>
-        <a href="../summary/index.html">Summary</a>
-        <a href="../quiz/index.html">Quiz</a>
         {#if userData}
             <p class="welcome">Welcome, <span class="capitalize">{userData.name}</span></p>
         {/if}
