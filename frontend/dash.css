@@ -89,17 +89,17 @@ main {
     grid-gap: 1rem;
 }
 
-header, footer {
+/* header, footer {
     grid-column: 1/3;
 }
 
 footer {
     margin-top: 200px;
-}
+} */
 
-h1 {
+/* h1 {
     font-family: Orbitron, sans-serif;
-}
+} */
 #fancy-smancy{
     margin: 10vw auto;
     height:25vw;
@@ -111,7 +111,7 @@ h1 {
     background-color: rgba(255, 255, 255, 0);
     border: 2px solid white;
     border-radius: 10px;
-    font-size: 1vw;
+    font-size: 1.5vw;
     margin-left: 6vw;
 }
 
@@ -130,25 +130,25 @@ p {
     margin-left: 6vw;
 }
 
-.welcome {
+/* .welcome {
     font-size: unset;
     margin: 0;
     border-top: 0;
-}
+} */
 
-.capitalize {
+/* .capitalize {
     text-transform: capitalize;
-}
+} */
 
 svg{
     fill:white;
 }
 
-ul {
+/* ul {
     text-align: left;
-}
+} */
 
-li {
+/* li {
     font-family: Roboto, sans-serif;
     color: #393D3F;
     font-size: 18pt;
@@ -213,5 +213,29 @@ li {
 
 .take-quiz:hover {
     background-color: #535758;
-}
+} */
 
+@media only screen and (max-width: 600px) {
+    #main {
+        grid-template-columns: 1fr;
+    }
+
+    #pretty {
+        display: none;
+    }
+
+    #fancy-smancy {
+        text-align: left;
+        margin-left: 3vw;
+    }
+
+    #fancy-smancy button {
+        font-size: 3vw;
+        /* margin-left: 3vw; */
+    }
+
+    p {
+        font-size: 6vw;
+        /* margin-left: 3vw; */
+    }
+  }
