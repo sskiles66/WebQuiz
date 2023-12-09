@@ -7,9 +7,9 @@ export function renderHeaderFooter() {
     new Header({
         target: document.querySelector("#header"),
     });
-    new Footer({
-        target: document.querySelector("#footer"),
-    });
+    // new Footer({
+    //     target: document.querySelector("#footer"),
+    // });
 }
 
 export const questionPool = [
