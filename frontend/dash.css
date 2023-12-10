@@ -130,11 +130,11 @@ p {
     margin-left: 6vw;
 }
 
-/* .welcome {
+.welcome {
     font-size: unset;
     margin: 0;
     border-top: 0;
-} */
+}
 
 /* .capitalize {
     text-transform: capitalize;
@@ -231,11 +231,11 @@ svg{
 
     #fancy-smancy button {
         font-size: 3vw;
-        /* margin-left: 3vw; */
+        
     }
 
     p {
         font-size: 6vw;
-        /* margin-left: 3vw; */
+        
     }
   }
