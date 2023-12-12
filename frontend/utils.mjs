@@ -27,13 +27,13 @@ export const questionPool = [
     },
     {
         questionTitle: "What is the purpose of HTML5 semantic elements?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["To give virtual high fives to web developers", "Semantic elements provide custom classes for their elements", "Semantic elements are unchangeable so they can't be messed with."],
         id: 3,
         correctAnswer: "Semantic elements provide information about the type of content they contain.",
     },
     {
         questionTitle: "How does event propagation work in JavaScript?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["I am not sure", "This is a wrong answer", "i really dont know"],
         id: 4,
         correctAnswer: "Event propagation describes the order in which events are received on the page.",
     },
@@ -51,7 +51,7 @@ export const questionPool = [
     },
     {
         questionTitle: "What are the benefits of using Svelte over other JavaScript frameworks?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["It sounds cooler.", "It has built in animations to choose from.", "Svelte offers layouts for websites that are easy to customize."],
         id: 7,
         correctAnswer: "Svelte offers a simpler and more intuitive API, better performance, and smaller bundle sizes.",
     },
