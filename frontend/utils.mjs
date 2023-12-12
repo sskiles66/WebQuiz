@@ -15,13 +15,13 @@ export function renderHeaderFooter() {
 export const questionPool = [
     {
         questionTitle: "What is the difference between `==` and `===` in JavaScript?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["One is incorrect, the other is correct", "One is used to compare string the other is used to compare unicorns", "`==` means you only have two objects to compare."],
         id: 1,
         correctAnswer: "While comparing values, triple equals also compares type.",
     },
     {
         questionTitle: "Can you explain how CSS selectors work?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["They help you know what looks good", "CSS selectors allow you to select the user's browser", "CSS selectors allow you to define what an elements class is"],
         id: 2,
         correctAnswer: "CSS selectors are used to select the content you want to style.",
     },
@@ -39,13 +39,13 @@ export const questionPool = [
     },
     {
         questionTitle: "What is the difference between `localStorage` and `sessionStorage`?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["Local storage is run on your computer rather than on someone elses", "Local storage is nearby and session storage is far away", "Session storage costs money and local storage is free"],
         id: 5,
         correctAnswer: "`localStorage` persists until explicitly deleted, while `sessionStorage` lasts for one session.",
     },
     {
         questionTitle: "Can you explain the box model in CSS?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["It's making divs into a box shape with the border effect", "It's making CSS box animations", "This is a wrong answer"],
         id: 6,
         correctAnswer: "The CSS box model is a box that wraps around every HTML element.",
     },
@@ -57,19 +57,19 @@ export const questionPool = [
     },
     {
         questionTitle: "How can you handle form submission in JavaScript?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["By adding pretty CSS animations", "It is handled by a web developer waiting for somone to submit the form", "Javascript automatically handles it"],
         id: 8,
         correctAnswer: "Form submission can be handled by listening to the `submit` event.",
     },
     {
         questionTitle: "What is the purpose of the `document.querySelector` method in JavaScript?",
-        wrongAnswers: ["i dont know", "idk", "i really dont know"],
+        wrongAnswers: ["To run a query on the document", "To help select queries", "To party"],
         id: 9,
         correctAnswer: "`document.querySelector` returns the first Element within the document that matches the specified selector.",
     },
     {
         questionTitle: "How can you include external CSS and JavaScript files in your HTML document?",
-        wrongAnswers: [" i dont know", " idk", " i really dont know"],
+        wrongAnswers: ["Put them in a 'div tag' respectively", " The files can be included in a 'p' tag respectively", "External CSS and JavaScript files can be included using the `css` and `javascript` tags respectively. "],
         id: 10,
         correctAnswer: "External CSS and JavaScript files can be included using the `link` and `script` tags respectively.",
     },
