@@ -271,7 +271,7 @@
     }
 
     .dropdown-header > * {
-        padding: 10px;
+        padding-bottom: 10px;
         margin: 10px;
     }
 
@@ -317,7 +317,7 @@
     }
 
     #signUpButton, #loginButton,  .logout{
-        margin: 0 auto;
+        margin: 10px auto;
         background-color: #9BF9FA;
         color: #393D3F;
         border: none;
